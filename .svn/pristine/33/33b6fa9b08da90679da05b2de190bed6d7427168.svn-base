@@ -1,0 +1,59 @@
+/**
+ * @file quadtree.h
+ * Quadtree class definition.
+ * @date Spring 2008
+ */
+
+#ifndef QUADTREE_H
+#define QUADTREE_H
+
+#include "png.h"
+
+/**
+ * A tree structure that is used to compress PNG images.
+ */
+class Quadtree
+{
+  public:
+    void buildTree(PNG img, int d);
+    Quadtree();
+    ~Quadtree();
+    Quadtree(PNG img, int d);
+    RGBAPixel getPixel(int x, int y);
+    PNG decompress();
+    void clockwiseRotate();
+    Quadtree(Quadtree const &other);
+    Quadtree const & operator=(Quadtree const & other);
+  private:
+    void clear();
+    int width;
+    /**
+     * A simple class representing a single node of a Quadtree.
+     * You may want to add to this class; in particular, it could
+     * probably use a constructor or two...
+     */
+    class QuadtreeNode
+    {
+      public:
+        QuadtreeNode* nwChild; /**< pointer to northwest child */
+        QuadtreeNode* neChild; /**< pointer to northeast child */
+        QuadtreeNode* swChild; /**< pointer to southwest child */
+        QuadtreeNode* seChild; /**< pointer to southeast child */
+
+        RGBAPixel element; /**< the pixel stored as this node's "data" */
+    };
+    void clear(QuadtreeNode*& croot);
+    QuadtreeNode* buildTreeHelp(PNG &img, int x, int y, int d);
+    QuadtreeNode* root; /**< pointer to root of quadtree */
+    int getNumberLeaves(QuadtreeNode* croot);
+    QuadtreeNode* getPixelHelp(QuadtreeNode* croot, int x, int y, int d);
+    void decompressHelp(PNG &img, int x, int y);
+    void rotateHelp(QuadtreeNode* croot);
+    void copy(Quadtree other);
+    void copyHelp(QuadtreeNode*& croot, QuadtreeNode* oroot);
+/**** Functions for testing/grading                      ****/
+/**** Do not remove this line or copy its contents here! ****/
+#include "quadtree_given.h"
+};
+
+#endif

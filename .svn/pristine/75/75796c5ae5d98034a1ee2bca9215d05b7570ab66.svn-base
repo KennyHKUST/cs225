@@ -1,0 +1,127 @@
+/**
+ * @file quadtree.cpp
+ * Quadtree class implementation.
+ * @date Spring 2008
+ */
+ #include "quadtree.h"
+ #include <math.h>
+ using namespace std;
+Quadtree::~Quadtree(){
+	clear();
+}
+void Quadtree::clear(){
+	clear(root);
+}
+void Quadtree::clear(QuadtreeNode* &croot){
+	if(croot == NULL)
+		return;
+	clear(croot->nwChild);
+	clear(croot->neChild);
+	clear(croot->swChild);
+	clear(croot->seChild);
+	delete root;
+}
+Quadtree::Quadtree(){
+	root = NULL;
+}
+Quadtree::Quadtree(PNG img, int d){
+	QuadtreeNode* q = buildTreeHelp(img, 0, 0, d);
+	root = q;
+	cout<<getNumberLeaves(root)<<endl;
+}
+void Quadtree::buildTree(PNG img, int d){
+	clear();
+	QuadtreeNode* q = buildTreeHelp(img, 0, 0, d);
+	root = q;
+	printTree();
+}
+
+Quadtree::QuadtreeNode* 
+Quadtree::buildTreeHelp(PNG img, int x, int y, int d){
+	if(d < 1)
+		return NULL;
+	//cout << "d = "<<d<<endl;
+	QuadtreeNode* q = new QuadtreeNode();
+	uint8_t r = 0;
+	uint8_t g = 0;
+	uint8_t b = 0;
+	uint8_t a = 0;
+	for(int i = x; i < x + d; i++){
+		for(int j = y; j < y + d; j++){
+			 r += img(i, j)->red;
+			 g += img(i, j)->green;
+			 b += img(i, j)->blue;
+			 a += img(i, j)->alpha;
+		}
+	}
+	q->element = RGBAPixel(r/(d*d), g/(d*d), b/(d*d), a/(d*d));
+
+	q->nwChild = buildTreeHelp(img, x, y, d/2);
+	q->neChild = buildTreeHelp(img, x + d/2, y, d/2);
+	q->swChild = buildTreeHelp(img, x, y + d/2, d/2);
+    q->seChild = buildTreeHelp(img, x + d/2, y + d/2, d/2);
+
+	return q;
+}
+
+RGBAPixel Quadtree::getPixel(int x, int y){
+	if(root == NULL)
+		return RGBAPixel();
+	return getPixelHelp(root, x, y, sqrt(getNumberLeaves(root)))->element;
+}
+Quadtree::QuadtreeNode* 
+Quadtree::getPixelHelp(QuadtreeNode* croot, int x, int y, int d){
+	if(d <= 1)
+		return croot;
+	if(x < d/2 + 1 && y < d/2 + 1)
+		return getPixelHelp(croot->nwChild, x, y, d/2);
+	if(x < d/2 + 1 && y >= d/2 +1)
+		return getPixelHelp(croot->swChild, x, y - d/2, d/2);
+	if(x >= d/2 + 1 && y < d/2 + 1)
+		return getPixelHelp(croot->neChild, x - d/2, y, d/2);
+	else
+		return getPixelHelp(croot->seChild, x - d/2, y - d/2, d/2);
+}
+int Quadtree::getNumberLeaves(QuadtreeNode* croot){
+	if(croot->nwChild == NULL && croot->neChild == NULL && 
+		croot->swChild == NULL && croot->seChild == NULL)
+		return 1;
+	return getNumberLeaves(croot->nwChild) + getNumberLeaves(croot->neChild)
+	+ getNumberLeaves(croot->swChild) + getNumberLeaves(croot->seChild);
+}
+PNG Quadtree::decompress(){
+	if(root == NULL)
+		return PNG();
+	int d = sqrt(getNumberLeaves(root));
+	PNG pic = PNG(d, d);
+	for(int i = 0; i < d; i++){
+		for(int j = 0; j < d; j++){
+			RGBAPixel r = getPixel(i, j);
+			pic(i, j)->red = r.red;
+			pic(i, j)->green = r.green;
+			pic(i, j)->blue = r.blue;
+			pic(i, j)->alpha = r.alpha;
+		}
+	}
+
+	return pic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

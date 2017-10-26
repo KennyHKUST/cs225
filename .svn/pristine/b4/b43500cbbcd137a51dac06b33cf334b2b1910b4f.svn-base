@@ -1,0 +1,44 @@
+/* Your code here! */
+#ifndef MAZE_H
+#define MAZE_H
+#include <iostream>
+#include "dsets.h"
+#include "png.h"
+#include "rgbapixel.h"
+using namespace std;
+class SquareMaze{
+	private:
+		class Square{
+			public:
+				bool rightWall;
+				bool bottomWall;
+				pair<int, int> coor;
+				Square(){}
+				Square(pair<int, int> coordinate){
+					rightWall = true;
+					bottomWall = true;
+					coor = coordinate;
+				}
+
+		};
+		vector<vector<Square>> maze;
+		DisjointSets set;
+		int width;
+		int height;
+		void bfs();
+		void blacken(PNG &p, int x, int y, int dir) const;
+	public:
+		void makeMaze(int w, int h);
+		bool canTravel(int x, int y, int dir) const;
+		void setWall(int x, int y, int dir, bool exists);
+		vector<int> solveMaze();
+		PNG* drawMaze() const;
+		PNG* drawMazeWithSolution();
+
+
+
+};
+
+
+
+#endif

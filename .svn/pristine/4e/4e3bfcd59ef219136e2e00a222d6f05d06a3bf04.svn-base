@@ -1,0 +1,54 @@
+/* Your code here! */
+#ifndef MAZE_H
+#define MAZE_H
+#include <iostream>
+#include <map>
+#include <stack>
+#include "dsets.h"
+#include "png.h"
+#include "rgbapixel.h"
+using namespace std;
+class SquareMaze{
+	private:
+		class Square{
+			public:
+				bool rightWall;
+				bool bottomWall;
+				pair<int, int> coor;
+				Square(){}
+				Square(pair<int, int> coordinate){
+					rightWall = true;
+					bottomWall = true;
+					coor = coordinate;
+				}
+
+		};
+		vector<vector<Square>> maze;
+		DisjointSets set;
+		//vector<int> steps;
+		int width;
+		int height;
+		vector<int> path;
+		void bfs();
+		void makeMazeHelp();
+		void blacken(PNG &p, int x, int y, int dir) const;
+		void solveMazeHelp(vector<vector<int>> &vectorSteps, vector<int> &steps, int x, int y, int prevDir);
+		void fillRed(PNG &p, int &x, int &y, int dir) const;
+		int changePrevDir(int prevDir);
+		pair<pair<int, int>, pair<int, vector<int>>> makeAPair(int x, int y, int dir, vector<int>* v);
+		void stackPush(stack<pair<pair<int, int>, pair<int, vector<int>>>> &s, int x, int y, vector<int> *curr, int i);
+	public:
+		void makeMaze(int w, int h);
+		bool canTravel(int x, int y, int dir) const;
+		void setWall(int x, int y, int dir, bool exists);
+		vector<int> solveMaze();
+		PNG* drawMaze() const;
+		PNG* drawMazeWithSolution();
+
+
+
+};
+
+
+
+#endif

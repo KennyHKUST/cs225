@@ -1,0 +1,479 @@
+/* Your code here! */
+#include <iostream>
+#include <queue> 
+#include <time.h>
+#include "maze.h"
+#include <map>
+#include <stack> 
+using namespace std;
+RGBAPixel r(255, 0, 0);
+void SquareMaze::makeMaze(int w, int h){
+	width = w;
+	height = h;
+	int n = 0;
+	maze.resize(width);
+	set.addelements(width * height);
+	for(int i = 0; i < width; i++){
+		maze[i].resize(height);
+		for(int j = 0; j < height; j++){
+			pair<int, int> coor(i, j);
+			Square s(coor);
+			maze[i][j] = s;
+			//set.addelements(n);
+			n++;
+		}
+	}
+	// for(unsigned long i = 0; i < 800 * 800; i++)
+	// 	;
+	
+	bfs();
+	cout<<"makeMaze finished"<<endl;
+}
+//ignore this function 
+void SquareMaze::makeMazeHelp(){
+	vector<vector<bool>> visited(width);
+	for(int i = 0; i < width; i++){
+		visited[i].resize(height);
+		for(int j = 0; j < height; j++){
+			visited[i][j] = false;
+		}
+	}
+	time_t t;
+	srand((unsigned) time(&t));
+	int loop = width * height / 2;
+	while(loop >= 0){
+		;
+	}
+}
+void SquareMaze::bfs(){
+	vector<vector<bool>> visited(width);
+	//initialize the visited vector
+	for(int i = 0; i < width; i++){
+		visited[i].resize(height);
+		for(int j = 0; j < height; j++){
+			visited[i][j] = false;
+		}
+	}
+	time_t t;
+	srand((unsigned) time(&t));
+	queue<Square> q;
+	q.push(maze[0][0]);
+	while(!q.empty()){
+		Square s = q.front();
+		q.pop();
+		int x = s.coor.first; //width
+		int y = s.coor.second;//height
+		if(!visited[x][y]){
+			visited[x][y] = true;
+			int num = rand() % 2;//random generate the num of walls to be set
+			int dir = rand() % 2;//random generate the collapsed wall
+			int elementInSet = width * y + x;
+			//cout<<"random generator"<<endl;
+			//cout<<"dir = "<<dir<<endl;
+
+			// if(dir == 0 && x == width - 1)
+			// 	dir = 1;//cannot set the grid to be false
+			// if(dir == 1 && y == height - 1)
+			// 	dir = 0;//cannot set the grid to be false
+			// int num2 = rand() % 2;
+			// if(num2 == 0){
+			// 	if(x + 1 < width)
+			// 		q.push(maze[x + 1][y]);
+			// 	if(y + 1 < height)
+			// 		q.push(maze[x][y + 1]);
+			// }
+			// else{
+
+			if(y + 1 < height)
+				q.push(maze[x][y + 1]);	
+			if(x + 1 < width)
+				q.push(maze[x + 1][y]);
+			
+			if(dir == 0 && x == width - 1)
+				dir = 1;
+
+			if(dir == 1 && y == height - 1)
+				dir = 0;
+
+			while(num >= 0){
+				if(dir == 0 && x != width - 1){
+					int elementRightInSet = width * y + x + 1;
+					if(set.find(elementInSet) != set.find(elementRightInSet)){
+						setWall(x, y, 0, false);
+						set.setunion(elementInSet, elementRightInSet);
+					}
+					// dir = 100;//prevent executing again in the next if function
+					// if(y != height - 1 && num == 1)
+					// 	dir = 1;
+				}
+				if(dir == 1 && y != height - 1){
+					int elementBottomInSet = width * (y + 1) + x;
+					if(set.find(elementInSet) != set.find(elementBottomInSet)){
+						setWall(x, y, 1, false);
+						set.setunion(elementInSet, elementBottomInSet);
+					}
+					// if(x != width - 1 && num == 1)
+					// 	dir = 0;
+				}
+				if(dir == 0)
+					dir = 1;//try bottom
+				else
+					dir = 0;//try right
+				num--;
+			}
+
+
+			// if(x + 2 < width)
+			// 	q.push(maze[x + 2][y]);
+			// if(x + 3 < width)
+			// 	q.push(maze[x + 3][y]);
+			// if(x + 4 < width)
+			// 	q.push(maze[x + 4][y]);
+
+			// if(y + 2 < height)
+			// 	q.push(maze[x][y + 2]);			
+			// if(y + 3 < height)
+			// 	q.push(maze[x][y + 3]);
+			// if(y + 4 < height)
+			// 	q.push(maze[x][y + 4]);
+
+			// cout<<"x = "<<x<<" y = "<<y<<endl;
+			// cout<<"dir = "<<dir<<endl;
+			// if(dir == 0 && x != width - 1){
+			// 	int elementRightInSet = width * y + x + 1;
+			// 	if(set.find(elementInSet) != set.find(elementRightInSet)){
+			// 		setWall(x, y, 0, false);
+			// 		set.setunion(elementInSet, elementRightInSet);
+			// 	}
+			// 	dir = 100;//prevent executing again in the next if function
+			// 	if(y != height - 1 && num == 1)
+			// 		dir = 1;//try bottom
+			// }
+			// if(dir == 1){
+			// 	int elementBottomInSet = width * (y + 1) + x;
+			// 	if(set.find(elementInSet) != set.find(elementBottomInSet)){
+			// 		setWall(x, y, 1, false);
+			// 		set.setunion(elementInSet, elementBottomInSet);
+			// 	}
+			// 	if(x != width - 1 && num == 1)
+			// 		dir = 0;//try right
+			// }
+			// if(dir == 0 && x != width - 1){
+			// 	int elementRightInSet = width * y + x + 1;
+			// 	if(set.find(elementInSet) != set.find(elementRightInSet)){
+			// 		setWall(x, y, 0, false);
+			// 		set.setunion(elementInSet, elementRightInSet);
+			// 	}
+			// 	dir = 100;//no need to try
+			// }
+
+
+
+		}
+	}
+
+
+
+
+}
+
+
+bool SquareMaze::canTravel(int x, int y, int dir) const{
+	//cout<<"x = "<<x<<" y = "<<y<<" dir = "<<dir<<endl;
+	if(dir == 0 && x < width - 1){
+		//cout<<maze[x][y].rightWall<<endl;
+		return maze[x][y].rightWall == false;
+	}
+
+	if(dir == 1 && y < height - 1){
+		//cout<<maze[x][y].bottomWall<<endl;
+		return maze[x][y].bottomWall == false;
+	}
+
+	if(dir == 2 && x != 0){
+		//cout<<maze[x-1][y].rightWall<<endl;
+		return maze[x-1][y].rightWall == false;
+	}
+
+	if(dir == 3 && y != 0){
+		//cout<<maze[x][y-1].bottomWall<<endl;
+		return maze[x][y-1].bottomWall == false;
+	}
+
+	return false;
+}
+
+void SquareMaze::setWall(int x, int y, int dir, bool exists){
+	if(dir == 0){
+		if(exists)
+			maze[x][y].rightWall = true;
+		else 
+			maze[x][y].rightWall = false;
+	}
+	if(dir == 1){
+		if(exists)
+			maze[x][y].bottomWall = true;
+		else 
+			maze[x][y].bottomWall = false;
+	}
+
+}
+vector<int> SquareMaze::solveMaze(){
+	for(int i = 0; i < 3; i++){
+		canTravel(0, 0, i);
+	}
+	vector<vector<int>>vectorSteps;
+	vector<int> steps;
+	solveMazeHelp(vectorSteps, steps, 0, 0, 1);
+	// if(steps.back() != -1)
+	// 	vectorSteps.push_back(steps);
+	// for(auto & it: steps){
+	// 	cout<<it<<endl;
+	// }
+	cout<<"size = "<<vectorSteps.size()<<endl;
+	// for(auto & it: vectorSteps){
+	// 	for(auto & val: it)
+	// 		cout<<val<<endl;
+	// 	cout<<"end of one path"<<endl;
+	// }
+	unsigned long size = 0;
+	int position;
+	for(unsigned long i = 0; i < vectorSteps.size(); i++){
+		if(vectorSteps[i].size() > size){
+			size = vectorSteps[i].size();
+			position = i;
+		}
+	}
+	path = vectorSteps[position];
+	return path;
+}
+void SquareMaze::solveMazeHelp(vector<vector<int>> &vectorSteps, vector<int> &steps, int dx, int dy, int prevDir){
+	// if(prevDir == 0)
+	// 	prevDir = 2;
+	// else if(prevDir == 1)
+	// 	prevDir = 3;
+	// else if(prevDir == 2)
+	// 	prevDir = 0;
+	// else 
+	// 	prevDir = 1;
+
+	// int loop = 0;
+	// vector<int> v(Steps);
+	// for(int i = 0; i < 4; i++){
+	// 	if(canTravel(x, y, i) && i != prevDir){
+	// 		// pair<int, int> coor(x, y);
+	// 		// auto lookup = map.find(coor);
+	// 		if(loop == 0){
+	// 			Steps.push_back(i);
+	// 			if(i == 0)
+	// 				solveMazeHelp(vectorSteps, Steps, x + 1, y, i);
+	// 			else if(i == 1)
+	// 				solveMazeHelp(vectorSteps, Steps, x, y + 1, i);
+	// 			else if(i == 2)
+	// 				solveMazeHelp(vectorSteps, Steps, x - 1, y, i);
+	// 			else
+	// 				solveMazeHelp(vectorSteps, Steps, x, y - 1, i);
+	// 			//if(Steps.back() != -1)
+	// 				//vectorSteps.push_back(Steps);
+	// 		}
+	// 		else{
+	// 			cout<<"visit?"<<endl;
+
+	// 			vector<int> newSteps(v);
+	// 			//newSteps.pop_back();
+	// 			newSteps.push_back(i);
+	// 			if(i == 0)
+	// 				solveMazeHelp(vectorSteps, newSteps, x + 1, y, i);
+	// 			else if(i == 1)
+	// 				solveMazeHelp(vectorSteps, newSteps, x, y + 1, i);
+	// 			else if(i == 2)
+	// 				solveMazeHelp(vectorSteps, newSteps, x - 1, y, i);
+	// 			else
+	// 				solveMazeHelp(vectorSteps, newSteps, x, y - 1, i);
+	// 			//if(newSteps.back() != -1)
+	// 			if(newSteps.back() != -1)
+	// 			vectorSteps.push_back(newSteps);
+	// 		}
+	// 		loop++;
+	// 	}
+		
+	// }
+	// if(loop == 0 && y != height - 1)
+	// 	Steps.push_back(-1);
+
+	stack<pair<pair<int, int>, pair<int, vector<int>>>> s;
+	//stack<pair<pair<int, int>, pair<int, vector<int> *>>> s;
+	auto p = makeAPair(dx, dy, 1, &steps);
+	s.push(p);
+	//stackPush(s, dx, dy, Steps, 1);
+	while(!s.empty()){
+		auto square = s.top();
+		s.pop();
+		int prevDir = changePrevDir(square.second.first);
+		vector<int>* curr = &square.second.second;
+		int x = square.first.first;
+		int y = square.first.second;
+		int loop = 0;
+		for(int i = 0; i < 4; i++){
+			if(canTravel(x, y, i) && i != prevDir){
+				//cout<<"x = "<<x<<" y = "<<y<<" i = "<<i<<endl;
+				if(loop != 0){
+					vector<int>* newcurr = curr;
+					newcurr->pop_back();
+					stackPush(s, x, y, newcurr, i);
+				}
+				else
+					stackPush(s, x, y, curr, i);
+				loop++;
+			}
+		}
+		if(loop > 0)//else is the end of a path
+			continue;
+		// for(auto &val: curr)
+		// 	cout<<val<<endl;
+		// cout<<" "<<endl;
+		if(y == height - 1)
+			vectorSteps.push_back(*curr);
+
+	}
+}
+void SquareMaze::stackPush(stack<pair<pair<int, int>, pair<int, vector<int>>>> &s, int x, int y, vector<int> *curr, int i){
+	curr->push_back(i);
+	if(i == 0)
+		s.push(makeAPair(x+1, y, i, curr));
+	if(i == 1)
+		s.push(makeAPair(x, y+1, i, curr));
+	if(i == 2)
+		s.push(makeAPair(x-1, y, i, curr));
+	if(i == 3)
+		s.push(makeAPair(x, y-1, i, curr));
+}
+pair<pair<int, int>, pair<int, vector<int>>> SquareMaze::makeAPair(int x, int y, int dir, vector<int> * v){
+
+	pair<int, int> firstCoor(x, y);
+	pair<int, vector<int>> def(dir, *v);
+	pair<pair<int, int>, pair<int, vector<int>>> p(firstCoor, def);
+	return p;
+}
+
+int SquareMaze::changePrevDir(int prevDir){
+	if(prevDir == 0)
+		prevDir = 2;
+	else if(prevDir == 1)
+		prevDir = 3;
+	else if(prevDir == 2)
+		prevDir = 0;
+	else 
+		prevDir = 1;
+	return prevDir;
+}
+void SquareMaze::blacken(PNG &p, int x, int y, int dir) const{
+	for(int k = 0; k <= 10; k++){
+		if(dir == 0){
+			p((x+1)*10, y*10+k)->red = 0;
+			p((x+1)*10, y*10+k)->blue = 0;
+			p((x+1)*10, y*10+k)->green = 0;
+		}
+		if(dir == 1){
+			p(x*10+k, (y+1)*10)->red = 0;
+			p(x*10+k, (y+1)*10)->blue = 0;
+			p(x*10+k, (y+1)*10)->green = 0;
+		}
+
+	}
+}
+void SquareMaze::fillRed(PNG &p, int &x, int &y, int dir) const{
+	for(int k = 0; k <= 10; k++){
+		if(dir == 0){//rightward
+			
+			p(x, y)->red = 255;
+			p(x, y)->blue = 0;
+			p(x, y)->green = 0;
+			x++;
+		}
+		if(dir == 1){//downward
+			
+			p(x, y)->red = 255;
+			p(x, y)->blue = 0;
+			p(x, y)->green = 0;
+			y++;
+		}
+		if(dir == 2){//leftward
+			
+			p(x, y)->red = 255;
+			p(x, y)->blue = 0;
+			p(x, y)->green = 0;
+			x--;
+		}
+		if(dir == 3){//upward
+			
+			p(x, y)->red = 255;
+			p(x, y)->blue = 0;
+			p(x, y)->green = 0;
+			y--;
+		}
+
+	}
+	if(dir == 0)
+		x--;
+	if(dir == 1)
+		y--;
+	if(dir == 2)
+		x++;
+	if(dir == 3)
+		y++;
+
+}
+PNG* SquareMaze::drawMaze() const{
+	int PNGWidth = width * 10 + 1;
+	int PNGHeight = height * 10 + 1;
+	PNG* p = new PNG(PNGWidth, PNGHeight);
+	//for(int k = 0; k <= 10; k++){
+	int k = 0;
+		for(int i = 0; i < PNGWidth; i++){
+			if(i < 1 || i > 9){
+				(*p)(i, k)->red = 0;
+				(*p)(i, k)->blue = 0;
+				(*p)(i, k)->green = 0;
+			}
+
+		}
+		for(int i = 0; i < PNGHeight; i++){
+			(*p)(k, i)->red = 0;
+			(*p)(k, i)->blue = 0;
+			(*p)(k, i)->green = 0;
+		}
+	//}
+	for(int i = 0; i < width; i++){
+		for(int j = 0; j < height; j++){
+			Square s = maze[i][j];
+			//cout<<"x = "<<i<<" y = "<<j<<endl;
+			if(s.rightWall){
+				//cout<<"drawright"<<endl;
+				//cout<<"x = "<<i<<" y = "<<j<<endl;
+				blacken(*p, i, j, 0);
+			}
+			if(s.bottomWall){
+				//cout<<"drawbottom"<<endl;
+				//cout<<"x = "<<i<<" y = "<<j<<endl;
+				blacken(*p, i, j, 1);
+			}
+		}
+	}
+	return p;
+}
+PNG* SquareMaze::drawMazeWithSolution(){
+	PNG* p = drawMaze();
+	//vector<int> path = solveMaze();
+	// path.push_back(1);
+	// path.push_back(0);
+	// path.push_back(1);
+	// path.push_back(0);
+	int x = 5;
+	int y = 5;
+	for(auto &dir: path)
+		fillRed(*p, x, y, dir);
+	return p;
+}
+
+

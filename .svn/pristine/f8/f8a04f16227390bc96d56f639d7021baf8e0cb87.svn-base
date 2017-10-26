@@ -1,0 +1,42 @@
+Grading r1383 by xinran2 committed on Thu Jan 19 17:01:13 CST 2017
+Monad Autograder
+Testing lab_intro at 2017-01-23 00:25:32
+
+"I did respond to your email, but I might have forgotten to hit send." ~ Cinda Heeren
+
+Setting up test environment...
+Compiling...
+================================================================
+rgbapixel.cpp:10:5: warning: explicitly assigning value of variable of type 'uint8_t' (aka 'unsigned char') to itself [-Wself-assign]
+        red=red;
+        ~~~^~~~
+rgbapixel.cpp:11:7: warning: explicitly assigning value of variable of type 'uint8_t' (aka 'unsigned char') to itself [-Wself-assign]
+        green=green;
+        ~~~~~^~~~~~
+rgbapixel.cpp:12:6: warning: explicitly assigning value of variable of type 'uint8_t' (aka 'unsigned char') to itself [-Wself-assign]
+        blue=blue;
+        ~~~~^~~~~
+3 warnings generated.
+main.cpp:60:14: error: use of undeclared identifier 'red'
+                amount=255-red;
+                           ^
+main.cpp:62:28: error: use of undeclared identifier 'green'
+                amount=255-green;
+                           ^
+main.cpp:64:28: error: use of undeclared identifier 'blue'
+                amount=255-blue;
+                           ^
+3 errors generated.
+make: *** [main.o] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+

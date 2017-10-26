@@ -1,0 +1,140 @@
+Exam #1 score (xinran2): 3/6
+
+=== Grade Feedback for Problem "exam1_createSmallClass_dodecahedron" ===
+[1/1]: Test: default constructor
+[1/1]: Test: one parameter constructor
+[1/1]: Test: use of type double
+=====
+[3/3]
+
+--- stdout ---
+g++ -g -O0 -Wall -Wextra main.cpp dodecahedron.cpp -o dodeca-tester
+Testing default constructor...
++ PASS : (new dodecahedron())->getVolume() == 7.663
+
+Testing one parameter constructor...
++ PASS : (new dodecahedron(2))->getVolume() == 61.304
+
+Testing use of type double...
++ PASS : (new dodecahedron(2.5))->getVolume() == 2.5 * 2.5 * 2.5 * 7.663
+
+
+
+--- stderr ---
+
+
+--- submitted file: dodecahedron.cpp ---
+#include "dodecahedron.h"
+
+//
+// The dodecahedron class must:
+//
+// - Store a variable a (stored as a double), which represents the length of
+//   one edge of the dodecahedron.
+//
+// - Have a default constructor that sets the length of the edge of the
+//   dodecahedron to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the dodecahedron.
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the dodecahedron (as a double):
+//   - The volume of the dodecahedron can be calculated by: 7.663 * a * a * a
+//
+dodecahedron::dodecahedron(){
+  a=1.0;
+}
+dodecahedron::dodecahedron(double len){
+  a=len;
+}
+double dodecahedron:: getVolume(){
+  return 7.663*a*a*a;
+}
+
+--- submitted file: dodecahedron.h ---
+#ifndef _DODECAHEDRON_H
+#define _DODECAHEDRON_H
+
+//
+// The dodecahedron class must:
+//
+// - Store a variable a (stored as a double), which represents the length of
+//   one edge of the dodecahedron.
+//
+// - Have a default constructor that sets the length of the edge of the
+//   dodecahedron to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the dodecahedron.
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the dodecahedron (as a double):
+//   - The volume of the dodecahedron can be calculated by: 7.663 * a * a * a
+//
+class dodecahedron{
+public:
+	dodecahedron();
+	dodecahedron(double len);
+        double	getVolume();
+private:
+	double  a;
+
+};
+#endif
+
+
+=== Grade Feedback for Problem "exam1_mp1-like_illiniBlue2" ===
+[0/1]: Test: in_1.png
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: in_2.png
+     Message: Unable to run test due to `make` failing.
+[0/1]: Test: in_3.png
+     Message: Unable to run test due to `make` failing.
+=====
+[0/3]
+
+--- stdout ---
+g++ -std=c++1y -c -g -O0 -Wall -Wextra -pedantic main.cpp
+
+
+--- stderr ---
+main.cpp:2:26: fatal error: dodecahedron.h: No such file or directory
+ #include "dodecahedron.h"
+                          ^
+compilation terminated.
+make: *** [main.o] Error 1
+
+
+--- submitted file: main.cpp ---
+#include <iostream>
+#include "dodecahedron.h"
+
+using namespace std;
+
+int main() {
+  // Default constructor
+  cout<<"Testing default constructor..."<<endl;
+
+  dodecahedron *c1 = new dodecahedron();
+  double d1 = c1->getVolume();
+
+  if (d1 == 1 * 7.663) { cout<<"+ PASS : (new dodecahedron())->getVolume == 7.663"<<endl; }
+  else                 { cout<<"! FAIL : (new dodecahedron())->getVolume == 7.663"<<endl; return 1; }
+  cout<<endl;
+
+  // One parameter constructor
+  cout<<"Testing one parameter constructor..."<<endl;
+
+  dodecahedron *c2 = new dodecahedron(2);
+  double d2 = c2->getVolume();
+
+  if (d2 == 8 * 7.663) { cout<<"+ PASS : (new dodecahedron(2))->getVolume == 61.304"<<endl; }
+  else                 { cout<<"! FAIL : (new dodecahedron(2))->getVolume == 61.304"<<endl; return 1; }
+  cout<<endl;
+
+  cout<<"Result: All test cases PASS!"<<endl;
+  return 0;
+}
+
+

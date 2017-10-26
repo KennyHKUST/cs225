@@ -1,0 +1,126 @@
+/**
+ * @file kdtree.cpp
+ * Implementation of KDTree class.
+ */
+
+template <int Dim>
+bool KDTree<Dim>::smallerDimVal(const Point<Dim>& first,
+                                const Point<Dim>& second, int curDim) const
+{
+    /**
+     * @todo Implement this function!
+     */
+    if(first[curDim] < second[curDim])
+      return true;
+    if(second[curDim] < first[curDim])
+      return false;
+    return first < second;
+}
+
+template <int Dim>
+bool KDTree<Dim>::shouldReplace(const Point<Dim>& target,
+                                const Point<Dim>& currentBest,
+                                const Point<Dim>& potential) const
+{
+    /**
+     * @todo Implement this function!
+     */
+    return false;
+}
+
+template <int Dim>
+KDTree<Dim>::KDTree(const vector<Point<Dim>>& newPoints)
+{
+    /**
+     * @todo Implement this function!
+     */
+  points = newPoints;
+  buildTree(0, points.size()-1,  0);
+}
+template <int Dim>
+void KDTree<Dim>::buildTree(int start, int end, int curDim)
+{
+  if(start >= end || end < 0)
+    return;
+  int medium = (start + end) / 2;
+  select(start, end, medium, curDim);
+  if(start < medium -1)
+    buildTree(start, medium - 1, (curDim + 1) % Dim);
+  if(end > medium + 1)
+    buildTree(medium + 1, end, (curDim + 1) % Dim);
+    //   int mindex;
+    // mindex = (start + end)/2;
+    // select(start, end, mindex, curDim);
+    // if(start < mindex - 1)
+    //     buildTree(start, mindex - 1, (curDim + 1) % Dim);
+    // if(end > mindex + 1)
+    //     buildTree(mindex + 1, end, (curDim + 1) % Dim);
+}
+template <int Dim>
+void KDTree<Dim>::select(int start, int end, int k, int curDim)
+{
+  if(start >= end)
+    return;
+  int split = partition(start, end, curDim);
+  int len = split - start + 1;
+  if(len == k)
+    return;
+  if(k < len)
+    return select(start, split - 1, k, curDim);
+  return select(split + 1, end, k - len, curDim);
+    //   if(start >= end)
+    //     return;
+    // int pIndex = (start + end)/2;
+    // pIndex = partition(start, end, pIndex, curDim);
+    // if(k == pIndex)
+    //     return;
+    // else if(k < pIndex)
+    //     select(start, pIndex - 1, curDim, k);
+    // else
+    //     select(pIndex + 1, end, curDim, k);
+}
+template <int Dim>
+int KDTree<Dim>::partition(int start, int end,  int curDim)
+{
+  Point<Dim> pivot = points[start];
+  int leftmark = start + 1;
+  int rightmark = end;
+  while(true){
+    while(leftmark < end && smallerDimVal(points[leftmark], pivot, curDim))
+      leftmark ++;
+    while(rightmark > start && smallerDimVal(pivot, points[rightmark], curDim))
+      rightmark --;
+    if(leftmark >= rightmark)
+      break;
+    else{
+      Point<Dim> temp = points[leftmark];
+      points[leftmark] = points[rightmark];
+      points[rightmark] = temp;
+    }
+  }
+  Point<Dim> temp = points[start];
+  points[start] = points[rightmark];
+  points[rightmark] = temp;
+  return rightmark;
+  // Point<Dim> pivotValue = points[pivotIndex];
+  //   std::swap(points[pivotIndex], points[end]);
+  //   int storeIndex = start;
+  //   for(int i = start; i < end; i++)
+  //   {
+  //       if(smallerDimVal(points[i], pivotValue, curDim))
+  //       {
+  //           std::swap(points[storeIndex], points[i]);
+  //           storeIndex++;
+  //       }
+  //   }
+  //   std::swap(points[end], points[storeIndex]);
+  //   return storeIndex;
+}
+template <int Dim>
+Point<Dim> KDTree<Dim>::findNearestNeighbor(const Point<Dim>& query) const
+{
+    /**
+     * @todo Implement this function!
+     */
+    return Point<Dim>();
+}

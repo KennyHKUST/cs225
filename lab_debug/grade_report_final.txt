@@ -1,0 +1,391 @@
+Grading r3603 by nwang16 committed on Wed Jan 25 00:39:26 CST 2017
+Monad Autograder
+Testing lab_debug at 2017-01-30 00:30:55
+
+"There's an old story about the person who wished his computer were as easy to use as his telephone. That wish has come true, since I no longer know how to use my telephone." ~ Bjarne Stroustrup
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+no_segfaults . . . [20 pts] - FAILED: Timed out (1000ms)
+produces_out_png . [10 pts] - FAILED: Aborted
+similar_sketch . . [30 pts] - FAILED: Aborted
+complete_in_01_png [20 pts] - FAILED: Segmentation fault
+complete_in_02_png [20 pts] - FAILED: Segmentation fault
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+no_segfaults [20 points]
+Result: FAILED: Timed out (1000ms)
+Took 1000ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+[EasyPNG]: Warning: attempted to access non-existent pixel (409, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (409, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (410, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (410, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (411, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (411, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (412, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (412, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (413, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (413, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (414, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (414, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (415, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (415, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (416, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (416, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (417, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (417, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (418, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (418, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (419, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (419, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (420, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (420, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (421, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (421, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (422, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (422, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (423, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (423, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (424, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (424, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (425, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (425, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (426, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (426, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (427, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (427, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (428, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (428, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (429, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (429, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (430, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (430, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (431, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (431, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (432, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (432, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (433, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (433, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (434, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (434, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (435, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (435, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (436, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (436, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (437, 1);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (437, 0);
+            Truncating request to fit in the range [0,408] x [0,306].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (438, 1);
+  
+
+----------------------------------------------------------------
+produces_out_png [10 points]
+Result: FAILED: Aborted
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+*** Error in `./proxy': free(): invalid pointer: 0x00007fae69683990 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7fae682c1503]
+./proxy[0x44cb54]
+./proxy[0x44ea70]
+./proxy[0x44f944]
+./proxy[0x4481fb]
+./proxy[0x448378]
+./proxy[0x41567d]
+./proxy[0x4112a9]
+./proxy[0x40ef90]
+./proxy[0x415456]
+./proxy[0x410761]
+./proxy[0x40c845]
+./proxy[0x40c03b]
+./proxy[0x40b829]
+./proxy[0x40b163]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fae68266b35]
+./proxy[0x409db4]
+======= Memory map: ========
+00400000-004a6000 r-xp 00000000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+006a5000-006a7000 r--p 000a5000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+006a7000-006a8000 rw-p 000a7000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+01f33000-01f54000 rw-p 00000000 00:00 0                                  [heap]
+7fae60000000-7fae60021000 rw-p 00000000 00:00 0 
+7fae60021000-7fae64000000 ---p 00000000 00:00 0 
+7fae67e2b000-7fae67e2d000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae67e2d000-7fae6802d000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802d000-7fae6802e000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802e000-7fae6802f000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802f000-7fae68044000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68044000-7fae68243000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68243000-7fae68244000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68244000-7fae68245000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68245000-7fae683fb000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae683fb000-7fae685fb000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae685fb000-7fae685ff000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae685ff000-7fae68601000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae68601000-7fae68606000 rw-p 00000000 00:00 0 
+7fae68606000-7fae6861b000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6861b000-7fae6881a000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881a000-7fae6881b000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881b000-7fae6881c000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881c000-7fae6891c000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae6891c000-7fae68b1c000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1c000-7fae68b1d000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1d000-7fae68b1e000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1e000-7fae68c29000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68c29000-7fae68e29000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68e29000-7fae68e30000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68e30000-7fae68e33000 rw-p 00000000 00:00 0 
+7fae68e33000-7fae68e5c000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae68e5c000-7fae6905c000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905c000-7fae6905d000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905d000-7fae6905e000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905e000-7fae69065000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69065000-7fae69264000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69264000-7fae69265000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69265000-7fae69266000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69266000-7fae6927d000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6927d000-7fae6947c000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947c000-7fae6947d000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947d000-7fae6947e000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947e000-7fae69482000 rw-p 00000000 00:00 0 
+7fae69482000-7fae694a2000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae6967f000-7fae69685000 rw-p 00000000 00:00 0 
+7fae6969e000-7fae6969f000 rw-p 00000000 00:00 0 
+7fae6969f000-7fae696a1000 rw-p 00000000 00:00 0 
+7fae696a1000-7fae696a2000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae696a2000-7fae696a3000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae696a3000-7fae696a4000 rw-p 00000000 00:00 0 
+7ffde19a0000-7ffde19c1000 rw-p 00000000 00:00 0                          [stack]
+7ffde19e6000-7ffde19e8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+----------------------------------------------------------------
+similar_sketch [30 points]
+Result: FAILED: Aborted
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+*** Error in `./proxy': munmap_chunk(): invalid pointer: 0x00007ffde19bf518 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7ada4)[0x7fae682bfda4]
+./proxy[0x44cb54]
+./proxy[0x44ea70]
+./proxy[0x44f944]
+./proxy[0x4481fb]
+./proxy[0x448644]
+./proxy[0x41567d]
+./proxy[0x4112a9]
+./proxy[0x40ef90]
+./proxy[0x415456]
+./proxy[0x410761]
+./proxy[0x40c845]
+./proxy[0x40c03b]
+./proxy[0x40b829]
+./proxy[0x40b163]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7fae68266b35]
+./proxy[0x409db4]
+======= Memory map: ========
+00400000-004a6000 r-xp 00000000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+006a5000-006a7000 r--p 000a5000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+006a7000-006a8000 rw-p 000a7000 00:12 3740403472                         /dev/shm/cs225student/autograder/monad/monad/lab_debug_grade/proxy
+01f33000-01f54000 rw-p 00000000 00:00 0                                  [heap]
+7fae67e2b000-7fae67e2d000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae67e2d000-7fae6802d000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802d000-7fae6802e000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802e000-7fae6802f000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7fae6802f000-7fae68044000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68044000-7fae68243000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68243000-7fae68244000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68244000-7fae68245000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7fae68245000-7fae683fb000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae683fb000-7fae685fb000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae685fb000-7fae685ff000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae685ff000-7fae68601000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7fae68601000-7fae68606000 rw-p 00000000 00:00 0 
+7fae68606000-7fae6861b000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6861b000-7fae6881a000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881a000-7fae6881b000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881b000-7fae6881c000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7fae6881c000-7fae6891c000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae6891c000-7fae68b1c000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1c000-7fae68b1d000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1d000-7fae68b1e000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7fae68b1e000-7fae68c29000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68c29000-7fae68e29000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68e29000-7fae68e30000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7fae68e30000-7fae68e33000 rw-p 00000000 00:00 0 
+7fae68e33000-7fae68e5c000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae68e5c000-7fae6905c000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905c000-7fae6905d000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905d000-7fae6905e000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7fae6905e000-7fae69065000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69065000-7fae69264000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69264000-7fae69265000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69265000-7fae69266000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7fae69266000-7fae6927d000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6927d000-7fae6947c000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947c000-7fae6947d000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947d000-7fae6947e000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7fae6947e000-7fae69482000 rw-p 00000000 00:00 0 
+7fae69482000-7fae694a2000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae6967f000-7fae69685000 rw-p 00000000 00:00 0 
+7fae6969e000-7fae6969f000 rw-p 00000000 00:00 0 
+7fae6969f000-7fae696a1000 rw-p 00000000 00:00 0 
+7fae696a1000-7fae696a2000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae696a2000-7fae696a3000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7fae696a3000-7fae696a4000 rw-p 00000000 00:00 0 
+7ffde19a0000-7ffde19c1000 rw-p 00000000 00:00 0                          [stack]
+7ffde19e6000-7ffde19e8000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+----------------------------------------------------------------
+complete_in_01_png [20 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+----------------------------------------------------------------
+complete_in_02_png [20 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 0
+

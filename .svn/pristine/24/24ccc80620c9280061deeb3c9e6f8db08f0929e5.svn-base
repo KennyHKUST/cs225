@@ -1,0 +1,310 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<style>
+tr.total {
+  border-top: solid 2px black;
+  font-weight: bold;
+}
+tr.total td:first-child {
+  text-align: right;
+}
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+  list-style-type: decimal !important;
+}
+pre {
+  font-size: 0.75rem;
+}
+h5 {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h3>xinran2's feedback report for exam1</h3>
+<hr>
+<h4>Summary and Overall Grade</h4>
+<table class="table table-sm" style="width: auto;">
+  <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th colspan="4">Score</th>
+    </tr>
+  </head>
+  <tbody>
+    <tr>
+      <td>Create a &quot;dodecahedron&quot; class</td>
+      <td style="text-align: right;">3</td>
+      <td>/</td>
+      <td style="text-align: right;">3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>&quot;Illini Blue&quot; an Image</td>
+      <td style="text-align: right;">0</td>
+      <td>/</td>
+      <td style="text-align: right;">3</td>
+      <td></td>
+    </tr>
+    <tr class="total">
+      <td>Total:</td>
+      <td style="text-align: right;">3</td>
+      <td>/</td>
+      <td style="text-align: right;">6</td>
+      <td>50.00%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+  <h4>&quot;Create a &quot;dodecahedron&quot; class&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="theproblem">The Problem</h4>
+<p>In lecture, we developed a <code>sphere</code> class in C++. In this problem, you will develop a <code>dodecahedron</code> class. <em>(A dodecahedron is a polyhedron with 12 faces, but this problem does not require you to know any details of a dodecahedron.)</em></p>
+<p>The <code>dodecahedron</code> class must:</p>
+<ul>
+<li>Store a variable a (stored as a double), which represents the length of one edge of the dodecahedron.</li>
+<li>Have a default constructor that sets the length of the edge of the dodecahedron to <code>1.0</code>.</li>
+<li>Have a second constructor that takes one parameter: the length of one edge of the dodecahedron.</li>
+<li>Have a getVolume function that takes no parameters and returns the volume of the dodecahedron (as a double):</li>
+<li>The volume of the dodecahedron can be calculated by: <code>7.663 * a * a * a</code></li>
+<li>The outline of the dodecahedron class is provided for you in <code>dodecahedron.cpp</code> and <code>dodecahedron.h</code>. To complete this problem, you must complete the <code>dodecahedron</code> class as described above. You should assume all input values will be valid.</li>
+</ul>
+<p>To help you test your code, we have provided test cases in <code>main.cpp</code>. To test your code, run the following commands:</p>
+<pre><code>make
+./dodeca-tester
+</code></pre>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      dodecahedron.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &quot;dodecahedron.h&quot;
+
+//
+// The dodecahedron class must:
+//
+// - Store a variable a (stored as a double), which represents the length of
+//   one edge of the dodecahedron.
+//
+// - Have a default constructor that sets the length of the edge of the
+//   dodecahedron to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the dodecahedron.
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the dodecahedron (as a double):
+//   - The volume of the dodecahedron can be calculated by: 7.663 * a * a * a
+//
+dodecahedron::dodecahedron(){
+  a&#x3D;1.0;
+}
+dodecahedron::dodecahedron(double len){
+  a&#x3D;len;
+}
+double dodecahedron:: getVolume(){
+  return 7.663*a*a*a;
+}
+</pre>
+    </div>
+    <div>
+      dodecahedron.h
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#ifndef _DODECAHEDRON_H
+#define _DODECAHEDRON_H
+
+//
+// The dodecahedron class must:
+//
+// - Store a variable a (stored as a double), which represents the length of
+//   one edge of the dodecahedron.
+//
+// - Have a default constructor that sets the length of the edge of the
+//   dodecahedron to 1.0.
+//
+// - Have a second constructor that takes one parameter: the length of one
+//   edge of the dodecahedron.
+//
+// - Have a getVolume function that takes no parameters and returns the volume
+//   of the dodecahedron (as a double):
+//   - The volume of the dodecahedron can be calculated by: 7.663 * a * a * a
+//
+class dodecahedron{
+public:
+	dodecahedron();
+	dodecahedron(double len);
+        double	getVolume();
+private:
+	double  a;
+
+};
+#endif
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>default constructor</td>
+        <td style="text-align: right;">1</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>one parameter constructor</td>
+        <td style="text-align: right;">1</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>use of type double</td>
+        <td style="text-align: right;">1</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">3</td>
+        <td>/</td>
+        <td style="text-align: right;">3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ -g -O0 -Wall -Wextra main.cpp dodecahedron.cpp -o dodeca-tester
+Testing default constructor...
++ PASS : (new dodecahedron())-&gt;getVolume() &#x3D;&#x3D; 7.663
+
+Testing one parameter constructor...
++ PASS : (new dodecahedron(2))-&gt;getVolume() &#x3D;&#x3D; 61.304
+
+Testing use of type double...
++ PASS : (new dodecahedron(2.5))-&gt;getVolume() &#x3D;&#x3D; 2.5 * 2.5 * 2.5 * 7.663
+
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";></pre>
+  </div>
+  <hr>
+  <h4>&quot;&quot;Illini Blue&quot; an Image&quot; Feedback</h4>
+
+  <h5>Question Text</h5>
+  <div style="border: solid 1px black; padding: 10px;">
+    <h4 id="theproblem">The Problem</h4>
+<p>Similar to lab_intro and MP1, in this problem you will manipulated an image using <code>RGBAPixel</code> and <code>PNG</code> classes. In this problem, you will "Illini Blue" the image.</p>
+  </div>
+
+  <h5>File Submissions</h5>
+    <div>
+      main.cpp
+    </div>
+    <div>
+      <pre class="prettyprint linenums">#include &lt;iostream&gt;
+#include &quot;dodecahedron.h&quot;
+
+using namespace std;
+
+int main() {
+  // Default constructor
+  cout&lt;&lt;&quot;Testing default constructor...&quot;&lt;&lt;endl;
+
+  dodecahedron *c1 &#x3D; new dodecahedron();
+  double d1 &#x3D; c1-&gt;getVolume();
+
+  if (d1 &#x3D;&#x3D; 1 * 7.663) { cout&lt;&lt;&quot;+ PASS : (new dodecahedron())-&gt;getVolume &#x3D;&#x3D; 7.663&quot;&lt;&lt;endl; }
+  else                 { cout&lt;&lt;&quot;! FAIL : (new dodecahedron())-&gt;getVolume &#x3D;&#x3D; 7.663&quot;&lt;&lt;endl; return 1; }
+  cout&lt;&lt;endl;
+
+  // One parameter constructor
+  cout&lt;&lt;&quot;Testing one parameter constructor...&quot;&lt;&lt;endl;
+
+  dodecahedron *c2 &#x3D; new dodecahedron(2);
+  double d2 &#x3D; c2-&gt;getVolume();
+
+  if (d2 &#x3D;&#x3D; 8 * 7.663) { cout&lt;&lt;&quot;+ PASS : (new dodecahedron(2))-&gt;getVolume &#x3D;&#x3D; 61.304&quot;&lt;&lt;endl; }
+  else                 { cout&lt;&lt;&quot;! FAIL : (new dodecahedron(2))-&gt;getVolume &#x3D;&#x3D; 61.304&quot;&lt;&lt;endl; return 1; }
+  cout&lt;&lt;endl;
+
+  cout&lt;&lt;&quot;Result: All test cases PASS!&quot;&lt;&lt;endl;
+  return 0;
+}
+</pre>
+    </div>
+
+  <h5>Results of Tests</h5>
+  <table class="table table-sm" style="width: auto;">
+    <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th colspan="3">Score</th>
+      </tr>
+    </head>
+    <tbody>
+      <tr>
+        <td>in_1.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>in_2.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr>
+        <td>in_3.png</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="total">
+        <td>Total:</td>
+        <td style="text-align: right;">0</td>
+        <td>/</td>
+        <td style="text-align: right;">3</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h5>Raw Output</h5>
+  <div>
+    <div>stdout</div>
+    <pre style="border: solid 1px black";>g++ -std&#x3D;c++1y -c -g -O0 -Wall -Wextra -pedantic main.cpp
+</pre>
+  </div>
+  <div>
+    <div>stderr</div>
+    <pre style="border: solid 1px black";>main.cpp:2:26: fatal error: dodecahedron.h: No such file or directory
+ #include &quot;dodecahedron.h&quot;
+                          ^
+compilation terminated.
+make: *** [main.o] Error 1
+</pre>
+  </div>
+  <hr>
+</div>
+</body>
+</html>

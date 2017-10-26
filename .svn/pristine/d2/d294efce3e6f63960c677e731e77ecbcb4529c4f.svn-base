@@ -1,0 +1,337 @@
+// /**
+//  * @file kdtree.cpp
+//  * Implementation of KDTree class.
+//  */
+
+// template <int Dim>
+// bool KDTree<Dim>::smallerDimVal(const Point<Dim>& first,
+//                                 const Point<Dim>& second, int curDim) const
+// {
+//     /**
+//      * @todo Implement this function!
+//      */
+//     if(first[curDim] != second[curDim])
+//       return first[curDim] <second[curDim];
+//     return first < second;
+// }
+
+// template <int Dim>
+// bool KDTree<Dim>::shouldReplace(const Point<Dim>& target,
+//                                 const Point<Dim>& currentBest,
+//                                 const Point<Dim>& potential) const
+// {
+//     /**
+//      * @todo Implement this function!
+//      */
+//     if(getDistance(target, potential) != getDistance(target, currentBest))
+//       return getDistance(target, potential) < getDistance(target, currentBest);
+//     return potential < target;
+// }
+
+// template <int Dim>
+// KDTree<Dim>::KDTree(const vector<Point<Dim>>& newPoints)
+// {
+//     /**
+//      * @todo Implement this function!
+//      */
+//   points = newPoints;
+//   buildTree(0, points.size()-1,  0);
+//   // for(unsigned int i = 0; i < points.size(); i++)
+//   //    cout<<" points["<<i<<"]="<<points[i];
+//   // cout<<endl;
+// }
+// template <int Dim>
+// void KDTree<Dim>::buildTree(int start, int end, int curDim)
+// {
+//   if(start >= end || end < 0)
+//     return;
+
+//   int medium = (start + end) / 2;
+//   //cout<<"start = "<<start<<" end = "<<end<<" medium = "<<medium<<" curdim = "<<curDim<<endl;
+//   select(start, end, medium, curDim);
+//   // for(unsigned int i = 0; i < points.size(); i++)
+//   //   cout<<" points["<<i<<"]="<<points[i];
+//   // cout<<endl;
+//  cout<<"buildTree"<<endl;
+//   buildTree(start, medium - 1, (curDim + 1) % Dim);
+
+//   buildTree(medium + 1, end, (curDim + 1) % Dim);
+//     //   int mindex;
+//     // mindex = (start + end)/2;
+//     // select(start, end, mindex, curDim);
+//     // if(start < mindex - 1)
+//     //     buildTree(start, mindex - 1, (curDim + 1) % Dim);
+//     // if(end > mindex + 1)
+//     //     buildTree(mindex + 1, end, (curDim + 1) % Dim);
+// }
+// template <int Dim>
+// void KDTree<Dim>::select(int start, int end, int k, int curDim)
+// {
+//   if(start >= end)
+//     return;
+//   int split = partition(start, end, curDim);
+//   int len = split;
+//   //cout<<" split = "<<split<<" k = "<<k<<endl;
+//   if(len == k)
+//     return;
+//   if(k < len)
+//     return select(start, split - 1, k, curDim);
+//   return select(split + 1, end, k, curDim);
+//     //   if(start >= end)
+//     //     return;
+//     // int pIndex = (start + end)/2;
+//     // pIndex = partition(start, end, pIndex, curDim);
+//     // if(k == pIndex)
+//     //     return;
+//     // else if(k < pIndex)
+//     //     select(start, pIndex - 1, curDim, k);
+//     // else
+//     //     select(pIndex + 1, end, curDim, k);
+// }
+// template <int Dim>
+// int KDTree<Dim>::partition(int start, int end,  int curDim)
+// {
+//   Point<Dim> pivot = points[start];
+//   int leftmark = start + 1;
+//   int rightmark = end;
+//   cout<<pivot[0]<<endl;
+//   cout<<pivot[1]<<endl;
+//   while(true){
+//     //cout<<"while loop"<<endl;
+//     while(leftmark < end && smallerDimVal(points[leftmark], pivot, curDim))
+//       leftmark ++;
+//     while(rightmark > start && smallerDimVal(pivot, points[rightmark], curDim))
+//       rightmark --;
+//     if(leftmark >= rightmark)
+//       break;
+//     else{
+//       Point<Dim> temp = points[leftmark];
+//       points[leftmark] = points[rightmark];
+//       points[rightmark] = temp;
+//     }
+//   }
+//   Point<Dim> temp = points[start];
+//   points[start] = points[rightmark];
+//   points[rightmark] = temp;
+//   //cout<<"rightmark = "<<rightmark<<" points[rightmark] = "<<points[rightmark]<<" points[start] = "<<points[start]<<endl;
+
+//   return rightmark;
+//   // Point<Dim> pivotValue = points[pivotIndex];
+//   //   std::swap(points[pivotIndex], points[end]);
+//   //   int storeIndex = start;
+//   //   for(int i = start; i < end; i++)
+//   //   {
+//   //       if(smallerDimVal(points[i], pivotValue, curDim))
+//   //       {
+//   //           std::swap(points[storeIndex], points[i]);
+//   //           storeIndex++;
+//   //       }
+//   //   }
+//   //   std::swap(points[end], points[storeIndex]);
+//   //   return storeIndex;
+// }
+// template <int Dim>
+// Point<Dim> KDTree<Dim>::findNearestNeighbor(const Point<Dim>& query) const
+// {
+//     /**
+//      * @todo Implement this function!
+//      */
+//     return findNearestNeighborHelp(query, 0, points.size()-1, 0);
+// }
+// template <int Dim>
+// int KDTree<Dim>::getDistance(const Point<Dim>& query, const Point<Dim>& p) const
+// {
+//   int distance = 0;
+//   for(int i = 0; i < Dim; i++){
+//     distance += (query[i] - p[i])*(query[i] - p[i]);
+//   }
+//   return distance;
+// }
+
+// template <int Dim>
+// Point<Dim> KDTree<Dim>::findNearestNeighborHelp(const Point<Dim>& query, int start, int end, int curDim) const
+// {
+//     /**
+//      * @todo Implement this function!
+//      */
+//     int medium = (start + end)/2;
+//     Point<Dim> p;
+//     //cout<<"start "<<start<<" end "<<end<<" medium "<<medium<<" point now is "<<points[medium]<<endl;
+//     if(smallerDimVal(query, points[medium], curDim)){
+//       if(medium - 1 < 0 || start > medium - 1)
+//         return points[medium];
+//       //cout<<"left"<<endl;
+
+//       p = findNearestNeighborHelp(query, start, medium-1, (curDim+1) % Dim);
+//     }
+//     else{
+//       if(medium + 1 >end)
+//         return points[medium];
+//       //cout<<points[medium]<<"right"<<endl;
+//       p = findNearestNeighborHelp(query, medium+1, end, (curDim+1) % Dim);
+//     }
+    
+//     if(shouldReplace(query, p, points[medium]))
+//       p = points[medium];
+//     int distance = getDistance(query, p);
+//     //cout<<"p is now "<<p<<" and curr point is "<<points[medium]<<endl;
+//     int radius = points[medium][curDim] - query[curDim];
+//     //cout<<"radius*radius = "<<radius*radius<<" distance = "<<distance<<endl;
+//     if(radius*radius <= distance){
+//       Point<Dim> q;
+//       //cout<<"im in"<<endl;
+//       if(smallerDimVal(query, points[medium], curDim) && (medium + 1) <= end){
+//         //cout<<points[medium]<<"right"<<endl;
+//         q = findNearestNeighborHelp(query, medium+1, end, (curDim+1) % Dim);
+//       }
+//       if(smallerDimVal(points[medium], query, curDim) && start <=(medium - 1)){
+//         //cout<<points[medium]<<"left"<<endl;
+//         q = findNearestNeighborHelp(query, start, medium-1, (curDim+1) % Dim);
+//       }
+//       if(shouldReplace(query, p, q))
+//         p = q;
+//     }
+
+
+
+
+//     return p;
+// }
+
+template<int Dim>
+bool KDTree<Dim>::smallerDimVal(const Point<Dim> & first, const Point<Dim> & second, int curDim) const
+{
+  if(curDim < Dim && curDim >= 0)
+  {
+    if(first[curDim]!=second[curDim])
+      return first[curDim] < second[curDim];
+    return first < second;
+  }
+  return false;
+}
+
+
+template<int Dim>
+bool KDTree<Dim>::shouldReplace(const Point<Dim> & target, const Point<Dim> & currentBest, const Point<Dim> & potential) const
+{
+  int currDistance = getDistance(target, currentBest);
+  int potenDistance = getDistance(target, potential);
+  if(currDistance != potenDistance)
+    return potenDistance < currDistance;
+  return potential < currentBest;
+}
+
+template<int Dim>
+KDTree<Dim>::KDTree(const vector< Point<Dim> > & newPoints)
+{
+  points = newPoints;
+    buildTreeHelper(0, points.size()-1, 0);
+}
+
+template<int Dim>
+Point<Dim> KDTree<Dim>::findNearestNeighbor(const Point<Dim> & query) const
+{
+  int left = 0;
+    int right = points.size() - 1;
+    int minDis = 0;
+    bool isFirst = true;
+    Point<Dim> currentBest;
+    findNearestHelper(query, currentBest, left, right, 0, minDis, isFirst);
+
+    return currentBest;
+}
+
+template<int Dim>
+int KDTree<Dim>::getDistance(const Point<Dim> & point1, const Point<Dim> & point2) const
+{
+    int distance = 0;
+  for(int i = 0; i < Dim; i++)
+    distance += (point1[i]-point2[i])*(point1[i]-point2[i]);
+  return distance;
+}
+
+
+template<int Dim>
+void KDTree<Dim>::buildTreeHelper(int left, int right, int dimension)
+{
+    int mindex;
+    mindex = (left + right)/2;
+    quickSelect(left, right, dimension, mindex);
+    if(left < mindex - 1)
+        buildTreeHelper(left, mindex - 1, (dimension + 1) % Dim);
+    if(right > mindex + 1)
+        buildTreeHelper(mindex + 1, right, (dimension + 1) % Dim);
+}
+
+template<int Dim>
+void KDTree<Dim>::quickSelect(int left, int right, int dimension, int mid_index)
+{
+    if(left >= right)
+        return;
+    int pIndex = (left + right)/2;
+    pIndex = partition(left, right, pIndex, dimension);
+    if(mid_index == pIndex)
+        return;
+    else if(mid_index < pIndex)
+        quickSelect(left, pIndex - 1, dimension, mid_index);
+    else
+        quickSelect(pIndex + 1, right, dimension, mid_index);
+}
+
+template<int Dim>
+int KDTree<Dim>::partition(int left, int right, int pivotIndex, int dimension)
+{
+    Point<Dim> pivotValue = points[pivotIndex];
+    std::swap(points[pivotIndex], points[right]);
+    int storeIndex = left;
+    for(int i = left; i < right; i++)
+    {
+        if(smallerDimVal(points[i], pivotValue, dimension))
+        {
+            std::swap(points[storeIndex], points[i]);
+            storeIndex++;
+        }
+    }
+    std::swap(points[right], points[storeIndex]);
+    return storeIndex;
+}
+
+template<int Dim>
+void KDTree<Dim>::findNearestHelper(const Point<Dim> & query, Point<Dim> & currentBest,
+                                    int left, int right, int dimension, int minDis, bool & isFirst) const
+{
+      if(left >= right)
+    {
+        if(isFirst)
+        {
+            isFirst = false;
+            currentBest = points[right];
+        }
+        else
+        {
+            if(shouldReplace(query, currentBest, points[left]))
+                currentBest = points[left];
+        }
+        return;
+    }
+    int mid_index = (left + right)/2;
+     if(smallerDimVal(query, points[mid_index], dimension))
+    {
+        findNearestHelper(query, currentBest, left, mid_index - 1, (dimension + 1)%Dim, minDis, isFirst);
+        if(shouldReplace(query, currentBest, points[mid_index]))
+            currentBest = points[mid_index];
+        minDis = getDistance(currentBest, query);
+        if((query[dimension] - points[mid_index][dimension]) * (query[dimension] - points[mid_index][dimension]) <= minDis)
+            findNearestHelper(query, currentBest, mid_index + 1, right, (dimension + 1)%Dim, minDis, isFirst);
+    }
+    else
+    {
+        findNearestHelper(query, currentBest, mid_index + 1, right, (dimension + 1)%Dim, minDis, isFirst);
+        if(shouldReplace(query, currentBest, points[mid_index]))
+            currentBest = points[mid_index];
+        minDis = getDistance(currentBest, query);
+        if((query[dimension] - points[mid_index][dimension]) * (query[dimension] - points[mid_index][dimension]) <= minDis)
+            findNearestHelper(query, currentBest, left, mid_index - 1, (dimension + 1)%Dim, minDis, isFirst);   
+    }
+    return;
+}

@@ -1,0 +1,181 @@
+Grading r41607 by xinran2 committed on Fri Apr  7 16:28:39 CDT 2017
+Monad Autograder
+Testing lab_btree at 2017-04-10 01:14:40
+
+"In the absence of our leader, I'm assuming control." ~ Kyle Johnson
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+test_insertion_idx_emp  . . . [10 pts] - passed
+test_insertion_idx_small  . . [10 pts] - passed
+test_insertion_idx_logn . . . [10 pts] - passed
+test_btree3_small (asan)  . . [10 pts] - FAILED:     #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225stud
+test_btree3_large_seq . . . . [10 pts] - passed
+test_btree3_large_rand  . . . [10 pts] - passed
+test_btree64_large_seq  . . . [10 pts] - passed
+test_btree64_large_rand . . . [10 pts] - passed
+test_btree128_med_rand (asan) [10 pts] - FAILED:     #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<i
+test_btree5_strings . . . . . [10 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 80
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+test_btree3_small (run under asan) [10 points]
+Result: FAILED:     #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225stud
+Took unknown time (5000ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_btree3_small [worth 10 points, output below]
+
+=================================================================
+==21267==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 224 byte(s) in 4 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #3 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #4 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #5 0x64e521 in proxy_test::test_btree3_small(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x64e521)
+    #6 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #7 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #8 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #9 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #10 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #11 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #12 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #13 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #14 0x7f46512ddb34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Direct leak of 168 byte(s) in 3 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #3 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #4 0x64e521 in proxy_test::test_btree3_small(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x64e521)
+    #5 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #6 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #7 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #8 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #9 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #10 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #11 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #12 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #13 0x7f46512ddb34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Direct leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #3 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #4 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #5 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #6 0x64e521 in proxy_test::test_btree3_small(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x64e521)
+    #7 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #8 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #9 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #10 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #11 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #12 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #13 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #14 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #15 0x7f46512ddb34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 160 byte(s) in 4 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x72514e in std::__1::__split_buffer<BTree<int, int>::BTreeNode*, std::__1::allocator<BTree<int, int>::BTreeNode*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<BTree<int, int>::BTreeNode*>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x72514e)
+    #2 0x735faf in std::__1::vector<BTree<int, int>::BTreeNode*, std::__1::allocator<BTree<int, int>::BTreeNode*> >::reserve(unsigned long) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x735faf)
+    #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225stude
+
+----------------------------------------------------------------
+test_btree128_med_rand (run under asan) [10 points]
+Result: FAILED:     #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<i
+Took unknown time (5500ms timeout)
+Output:
+----------------------------------------------------------------
+Running test_btree128_med_rand [worth 10 points, output below]
+
+=================================================================
+==21278==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 647360 byte(s) in 11560 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #3 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #4 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #5 0x652bbf in proxy_test::test_btree128_med_rand(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x652bbf)
+    #6 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #7 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #8 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #9 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #10 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #11 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #12 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #13 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #14 0x7f30f31f2b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Direct leak of 465472 byte(s) in 8312 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #3 0x7061d8 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7061d8)
+    #4 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #5 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #6 0x652bbf in proxy_test::test_btree128_med_rand(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x652bbf)
+    #7 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #8 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #9 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #10 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #11 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #12 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #13 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #14 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #15 0x7f30f31f2b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Direct leak of 7168 byte(s) in 128 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x7055dd in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<int, int>::DataPair const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x7055dd)
+    #2 0x70330a in BTree<int, int>::insert(int const&, int const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x70330a)
+    #3 0x66af00 in void do_inserts<int, int>(std::__1::vector<std::__1::pair<int, int>, std::__1::allocator<std::__1::pair<int, int> > >&, BTree<int, int>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x66af00)
+    #4 0x652bbf in proxy_test::test_btree128_med_rand(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x652bbf)
+    #5 0x4ecc18 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ecc18)
+    #6 0x4d1d63 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4d1d63)
+    #7 0x4c2dec in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4c2dec)
+    #8 0x4bd462 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4bd462)
+    #9 0x4b3127 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b3127)
+    #10 0x4b22c7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4b22c7)
+    #11 0x4aea29 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4aea29)
+    #12 0x4ac37e in main (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x4ac37e)
+    #13 0x7f30f31f2b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 12022400 byte(s) in 11560 object(s) allocated from:
+    #0 0x42050b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x72514e in std::__1::__split_buffer<BTree<int, int>::BTreeNode*, std::__1::allocator<BTree<int, int>::BTreeNode*>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<BTree<int, int>::BTreeNode*>&) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x72514e)
+    #2 0x735faf in std::__1::vector<BTree<int, int>::BTreeNode*, std::__1::allocator<BTree<int, int>::BTreeNode*> >::reserve(unsigned long) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x735faf)
+    #3 0x704de2 in BTree<int, int>::BTreeNode::BTreeNode(bool, unsigned int) (/dev/shm/cs225student/autograder/monad/monad/lab_btree_grade/proxy-asan+0x704de2)
+    #4 0x705660 in BTree<int, int>::insert(BTree<int, int>::BTreeNode*, BTree<in
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 80
+

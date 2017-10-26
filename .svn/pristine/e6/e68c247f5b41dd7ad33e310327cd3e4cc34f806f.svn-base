@@ -1,0 +1,1388 @@
+Grading r19758 by xinran2 committed on Sun Feb 19 22:54:03 CST 2017
+Monad Autograder
+Testing lab_gdb2 at 2017-02-20 00:45:09
+
+"Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration." ~ Stan Kelly-Bootle
+
+Setting up test environment...
+Compiling...
+================================================================
+
+
+Running tests...
+================================================================
+testFind1_I . . . . . . [5 pts]  - passed
+testFind1_R . . . . . . [5 pts]  - passed
+testFind2_I . . . . . . [5 pts]  - passed
+testFind2_R . . . . . . [5 pts]  - passed
+testFind3_I . . . . . . [10 pts] - FAILED: Aborted
+testFind3_R . . . . . . [10 pts] - FAILED: Segmentation fault
+testInsertAscending . . [5 pts]  - FAILED: Aborted
+testInsertAscendingBack [5 pts]  - FAILED: Aborted
+testInsertRandom  . . . [8 pts]  - FAILED: Aborted
+testInsertRandomBack  . [8 pts]  - FAILED: Aborted
+testInsertTough (asan)  [10 pts] - FAILED: Memory errors detected by ASAN
+testRemoveEasy  . . . . [5 pts]  - FAILED: Segmentation fault
+testRemoveHard (asan) . [10 pts] - FAILED: Memory errors detected by ASAN
+testConstructor1 (asan) [4 pts]  - passed
+testConstructor2 (asan) [5 pts]  - FAILED: Memory errors detected by ASAN
+
+
+Total score...
+================================================================
+TOTAL SCORE: 24
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+testFind3_I [10 points]
+Result: FAILED: Aborted
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key3
+The keys are now < 1 >
+traverse->prev1
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key5
+The keys are now < 1, 3 >
+traverse->prev3
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+3
+go next
+5
+go next
+2147483647
+go down
+5
+go next
+2147483647
+go down
+newNodeLevel = 3
+Insert key7
+The keys are now < 1, 3, 5 >
+traverse->prev5
+*** Error in `./proxy': malloc(): memory corruption (fast): 0x0000000001b098a0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7ada4)[0x7f2a31c50da4]
+/lib64/libc.so.6(+0x7ddc7)[0x7f2a31c53dc7]
+/lib64/libc.so.6(__libc_malloc+0x4c)[0x7f2a31c55fbc]
+./proxy(_Znwm+0x1a)[0x46340a]
+./proxy[0x459822]
+./proxy[0x4595b5]
+./proxy[0x45a92b]
+./proxy[0x45818d]
+./proxy[0x44b678]
+./proxy[0x41609d]
+./proxy[0x411cb9]
+./proxy[0x40f706]
+./proxy[0x415e66]
+./proxy[0x411021]
+./proxy[0x40cee5]
+./proxy[0x40c6db]
+./proxy[0x40bec9]
+./proxy[0x40b803]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2a31bf7b35]
+./proxy[0x40a454]
+======= Memory map: ========
+00400000-004bb000 r-xp 00000000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006ba000-006bc000 r--p 000ba000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006bc000-006bd000 rw-p 000bc000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+01b09000-01b2a000 rw-p 00000000 00:00 0                                  [heap]
+7f2a2c000000-7f2a2c021000 rw-p 00000000 00:00 0 
+7f2a2c021000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a317bc000-7f2a317be000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a317be000-7f2a319be000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319be000-7f2a319bf000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319bf000-7f2a319c0000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319c0000-7f2a319d5000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a319d5000-7f2a31bd4000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd4000-7f2a31bd5000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd5000-7f2a31bd6000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd6000-7f2a31d8c000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31d8c000-7f2a31f8c000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f8c000-7f2a31f90000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f90000-7f2a31f92000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f92000-7f2a31f97000 rw-p 00000000 00:00 0 
+7f2a31f97000-7f2a31fac000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a31fac000-7f2a321ab000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ab000-7f2a321ac000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ac000-7f2a321ad000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ad000-7f2a322ad000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a322ad000-7f2a324ad000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ad000-7f2a324ae000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ae000-7f2a324af000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324af000-7f2a325ba000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a325ba000-7f2a327ba000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327ba000-7f2a327c1000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327c1000-7f2a327c4000 rw-p 00000000 00:00 0 
+7f2a327c4000-7f2a327ed000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a327ed000-7f2a329ed000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ed000-7f2a329ee000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ee000-7f2a329ef000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ef000-7f2a329f6000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a329f6000-7f2a32bf5000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf5000-7f2a32bf6000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf6000-7f2a32bf7000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf7000-7f2a32c0e000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32c0e000-7f2a32e0d000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0d000-7f2a32e0e000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0e000-7f2a32e0f000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0f000-7f2a32e13000 rw-p 00000000 00:00 0 
+7f2a32e13000-7f2a32e33000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a3300f000-7f2a33015000 rw-p 00000000 00:00 0 
+7f2a3302f000-7f2a33030000 rw-p 00000000 00:00 0 
+7f2a33030000-7f2a33032000 rw-p 00000000 00:00 0 
+7f2a33032000-7f2a33033000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33033000-7f2a33034000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33034000-7f2a33035000 rw-p 00000000 00:00 0 
+7fffb955d000-7fffb957e000 rw-p 00000000 00:00 0                          [stack]
+7fffb95b1000-7fffb95b3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+testFind3_R [10 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key3
+The keys are now < 1 >
+traverse->prev1
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key5
+The keys are now < 1, 3 >
+traverse->prev3
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+3
+go next
+5
+go next
+2147483647
+go down
+5
+go next
+2147483647
+go down
+newNodeLevel = 3
+Insert key7
+The keys are now < 1, 3, 5 >
+traverse->prev5
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key9
+The keys are now < 1, 3, 5, 7 >
+traverse->prev7
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key11
+The keys are now < 1, 3, 5, 7, 9 >
+traverse->prev9
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+7
+go next
+11
+go next
+28349024
+go down
+11
+go next
+28349024
+go down
+Terminated by SIGSEGV
+
+----------------------------------------------------------------
+testInsertAscending [5 points]
+Result: FAILED: Aborted
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key4
+The keys are now < 1 >
+traverse->prev1
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key7
+The keys are now < 1, 4 >
+traverse->prev4
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+4
+go next
+7
+go next
+2147483647
+go down
+7
+go next
+2147483647
+go down
+newNodeLevel = 3
+Insert key10
+The keys are now < 1, 4, 7 >
+traverse->prev7
+*** Error in `./proxy': double free or corruption (out): 0x0000000001b09320 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7f2a31c52503]
+./proxy[0x459dc4]
+./proxy[0x4596a8]
+./proxy[0x457e1f]
+./proxy[0x44c803]
+./proxy[0x41609d]
+./proxy[0x411cb9]
+./proxy[0x40f706]
+./proxy[0x415e66]
+./proxy[0x411021]
+./proxy[0x40cee5]
+./proxy[0x40c6db]
+./proxy[0x40bec9]
+./proxy[0x40b803]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2a31bf7b35]
+./proxy[0x40a454]
+======= Memory map: ========
+00400000-004bb000 r-xp 00000000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006ba000-006bc000 r--p 000ba000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006bc000-006bd000 rw-p 000bc000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+01b09000-01b2a000 rw-p 00000000 00:00 0                                  [heap]
+7f2a2c000000-7f2a2c021000 rw-p 00000000 00:00 0 
+7f2a2c021000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a317bc000-7f2a317be000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a317be000-7f2a319be000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319be000-7f2a319bf000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319bf000-7f2a319c0000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319c0000-7f2a319d5000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a319d5000-7f2a31bd4000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd4000-7f2a31bd5000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd5000-7f2a31bd6000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd6000-7f2a31d8c000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31d8c000-7f2a31f8c000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f8c000-7f2a31f90000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f90000-7f2a31f92000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f92000-7f2a31f97000 rw-p 00000000 00:00 0 
+7f2a31f97000-7f2a31fac000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a31fac000-7f2a321ab000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ab000-7f2a321ac000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ac000-7f2a321ad000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ad000-7f2a322ad000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a322ad000-7f2a324ad000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ad000-7f2a324ae000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ae000-7f2a324af000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324af000-7f2a325ba000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a325ba000-7f2a327ba000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327ba000-7f2a327c1000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327c1000-7f2a327c4000 rw-p 00000000 00:00 0 
+7f2a327c4000-7f2a327ed000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a327ed000-7f2a329ed000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ed000-7f2a329ee000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ee000-7f2a329ef000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ef000-7f2a329f6000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a329f6000-7f2a32bf5000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf5000-7f2a32bf6000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf6000-7f2a32bf7000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf7000-7f2a32c0e000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32c0e000-7f2a32e0d000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0d000-7f2a32e0e000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0e000-7f2a32e0f000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0f000-7f2a32e13000 rw-p 00000000 00:00 0 
+7f2a32e13000-7f2a32e33000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a3300f000-7f2a33015000 rw-p 00000000 00:00 0 
+7f2a3302f000-7f2a33030000 rw-p 00000000 00:00 0 
+7f2a33030000-7f2a33032000 rw-p 00000000 00:00 0 
+7f2a33032000-7f2a33033000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33033000-7f2a33034000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33034000-7f2a33035000 rw-p 00000000 00:00 0 
+7fffb955d000-7fffb957e000 rw-p 00000000 00:00 0                          [stack]
+7fffb95b1000-7fffb95b3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+testInsertAscendingBack [5 points]
+Result: FAILED: Aborted
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key4
+The keys are now < 1 >
+traverse->prev1
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key7
+The keys are now < 1, 4 >
+traverse->prev4
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+4
+go next
+7
+go next
+2147483647
+go down
+7
+go next
+2147483647
+go down
+newNodeLevel = 3
+Insert key10
+The keys are now < 1, 4, 7 >
+traverse->prev7
+*** Error in `./proxy': double free or corruption (out): 0x0000000001b09320 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7c503)[0x7f2a31c52503]
+./proxy[0x459dc4]
+./proxy[0x4596a8]
+./proxy[0x457e1f]
+./proxy[0x44cc33]
+./proxy[0x41609d]
+./proxy[0x411cb9]
+./proxy[0x40f706]
+./proxy[0x415e66]
+./proxy[0x411021]
+./proxy[0x40cee5]
+./proxy[0x40c6db]
+./proxy[0x40bec9]
+./proxy[0x40b803]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2a31bf7b35]
+./proxy[0x40a454]
+======= Memory map: ========
+00400000-004bb000 r-xp 00000000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006ba000-006bc000 r--p 000ba000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006bc000-006bd000 rw-p 000bc000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+01b09000-01b2a000 rw-p 00000000 00:00 0                                  [heap]
+7f2a2c000000-7f2a2c021000 rw-p 00000000 00:00 0 
+7f2a2c021000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a317bc000-7f2a317be000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a317be000-7f2a319be000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319be000-7f2a319bf000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319bf000-7f2a319c0000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319c0000-7f2a319d5000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a319d5000-7f2a31bd4000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd4000-7f2a31bd5000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd5000-7f2a31bd6000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd6000-7f2a31d8c000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31d8c000-7f2a31f8c000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f8c000-7f2a31f90000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f90000-7f2a31f92000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f92000-7f2a31f97000 rw-p 00000000 00:00 0 
+7f2a31f97000-7f2a31fac000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a31fac000-7f2a321ab000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ab000-7f2a321ac000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ac000-7f2a321ad000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ad000-7f2a322ad000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a322ad000-7f2a324ad000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ad000-7f2a324ae000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ae000-7f2a324af000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324af000-7f2a325ba000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a325ba000-7f2a327ba000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327ba000-7f2a327c1000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327c1000-7f2a327c4000 rw-p 00000000 00:00 0 
+7f2a327c4000-7f2a327ed000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a327ed000-7f2a329ed000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ed000-7f2a329ee000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ee000-7f2a329ef000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ef000-7f2a329f6000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a329f6000-7f2a32bf5000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf5000-7f2a32bf6000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf6000-7f2a32bf7000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf7000-7f2a32c0e000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32c0e000-7f2a32e0d000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0d000-7f2a32e0e000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0e000-7f2a32e0f000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0f000-7f2a32e13000 rw-p 00000000 00:00 0 
+7f2a32e13000-7f2a32e33000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a3300f000-7f2a33015000 rw-p 00000000 00:00 0 
+7f2a3302f000-7f2a33030000 rw-p 00000000 00:00 0 
+7f2a33030000-7f2a33032000 rw-p 00000000 00:00 0 
+7f2a33032000-7f2a33033000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33033000-7f2a33034000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33034000-7f2a33035000 rw-p 00000000 00:00 0 
+7fffb955d000-7fffb957e000 rw-p 00000000 00:00 0                          [stack]
+7fffb95b1000-7fffb95b3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+testInsertRandom [8 points]
+Result: FAILED: Aborted
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key739
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key718
+The keys are now < 739 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 2
+ForwarLevel = 1
+MaxLevel = 2
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key907
+The keys are now < 718, 739 >
+traverse->prev739
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+718
+go down
+newNodeLevel = 3
+Insert key25
+The keys are now < 718, 739, 907 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key910
+The keys are now < 25, 718, 739, 907 >
+traverse->prev907
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key313
+The keys are now < 25, 718, 739, 907, 910 >
+traverse->prev25
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+25
+go next
+313
+go down
+25
+go next
+313
+go down
+25
+go next
+313
+go down
+newNodeLevel = 3
+Insert key130
+The keys are now < 25, 313, 718, 739, 907, 910 >
+traverse->prev25
+*** Error in `./proxy': malloc(): memory corruption: 0x0000000001b0a2f0 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7dd4d)[0x7f2a31c53d4d]
+/lib64/libc.so.6(__libc_malloc+0x4c)[0x7f2a31c55fbc]
+./proxy(_Znwm+0x1a)[0x46340a]
+./proxy[0x458153]
+./proxy[0x44d6da]
+./proxy[0x41609d]
+./proxy[0x411cb9]
+./proxy[0x40f706]
+./proxy[0x415e66]
+./proxy[0x411021]
+./proxy[0x40cee5]
+./proxy[0x40c6db]
+./proxy[0x40bec9]
+./proxy[0x40b803]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2a31bf7b35]
+./proxy[0x40a454]
+======= Memory map: ========
+00400000-004bb000 r-xp 00000000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006ba000-006bc000 r--p 000ba000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006bc000-006bd000 rw-p 000bc000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+01b09000-01b2a000 rw-p 00000000 00:00 0                                  [heap]
+7f2a2c000000-7f2a2c021000 rw-p 00000000 00:00 0 
+7f2a2c021000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a317bc000-7f2a317be000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a317be000-7f2a319be000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319be000-7f2a319bf000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319bf000-7f2a319c0000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319c0000-7f2a319d5000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a319d5000-7f2a31bd4000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd4000-7f2a31bd5000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd5000-7f2a31bd6000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd6000-7f2a31d8c000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31d8c000-7f2a31f8c000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f8c000-7f2a31f90000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f90000-7f2a31f92000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f92000-7f2a31f97000 rw-p 00000000 00:00 0 
+7f2a31f97000-7f2a31fac000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a31fac000-7f2a321ab000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ab000-7f2a321ac000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ac000-7f2a321ad000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ad000-7f2a322ad000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a322ad000-7f2a324ad000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ad000-7f2a324ae000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ae000-7f2a324af000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324af000-7f2a325ba000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a325ba000-7f2a327ba000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327ba000-7f2a327c1000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327c1000-7f2a327c4000 rw-p 00000000 00:00 0 
+7f2a327c4000-7f2a327ed000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a327ed000-7f2a329ed000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ed000-7f2a329ee000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ee000-7f2a329ef000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ef000-7f2a329f6000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a329f6000-7f2a32bf5000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf5000-7f2a32bf6000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf6000-7f2a32bf7000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf7000-7f2a32c0e000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32c0e000-7f2a32e0d000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0d000-7f2a32e0e000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0e000-7f2a32e0f000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0f000-7f2a32e13000 rw-p 00000000 00:00 0 
+7f2a32e13000-7f2a32e33000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a3300f000-7f2a33015000 rw-p 00000000 00:00 0 
+7f2a3302f000-7f2a33030000 rw-p 00000000 00:00 0 
+7f2a33030000-7f2a33032000 rw-p 00000000 00:00 0 
+7f2a33032000-7f2a33033000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33033000-7f2a33034000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33034000-7f2a33035000 rw-p 00000000 00:00 0 
+7fffb955d000-7fffb957e000 rw-p 00000000 00:00 0                          [stack]
+7fffb95b1000-7fffb95b3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+testInsertRandomBack [8 points]
+Result: FAILED: Aborted
+Took 0ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key739
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key718
+The keys are now < 739 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 2
+ForwarLevel = 1
+MaxLevel = 2
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key907
+The keys are now < 718, 739 >
+traverse->prev739
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+718
+go down
+newNodeLevel = 3
+Insert key25
+The keys are now < 718, 739, 907 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key910
+The keys are now < 25, 718, 739, 907 >
+traverse->prev907
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key313
+The keys are now < 25, 718, 739, 907, 910 >
+traverse->prev25
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 3
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+25
+go next
+313
+go down
+25
+go next
+313
+go down
+25
+go next
+313
+go down
+newNodeLevel = 3
+Insert key130
+The keys are now < 25, 313, 718, 739, 907, 910 >
+traverse->prev25
+*** Error in `./proxy': malloc(): memory corruption: 0x0000000001b0b090 ***
+======= Backtrace: =========
+/lib64/libc.so.6(+0x7dd4d)[0x7f2a31c53d4d]
+/lib64/libc.so.6(__libc_malloc+0x4c)[0x7f2a31c55fbc]
+./proxy(_Znwm+0x1a)[0x46340a]
+./proxy[0x458153]
+./proxy[0x44dffa]
+./proxy[0x41609d]
+./proxy[0x411cb9]
+./proxy[0x40f706]
+./proxy[0x415e66]
+./proxy[0x411021]
+./proxy[0x40cee5]
+./proxy[0x40c6db]
+./proxy[0x40bec9]
+./proxy[0x40b803]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f2a31bf7b35]
+./proxy[0x40a454]
+======= Memory map: ========
+00400000-004bb000 r-xp 00000000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006ba000-006bc000 r--p 000ba000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+006bc000-006bd000 rw-p 000bc000 00:12 2455394979                         /dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy
+01b09000-01b2a000 rw-p 00000000 00:00 0                                  [heap]
+7f2a2c000000-7f2a2c021000 rw-p 00000000 00:00 0 
+7f2a2c021000-7f2a30000000 ---p 00000000 00:00 0 
+7f2a317bc000-7f2a317be000 r-xp 00000000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a317be000-7f2a319be000 ---p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319be000-7f2a319bf000 r--p 00002000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319bf000-7f2a319c0000 rw-p 00003000 fd:00 39902                      /usr/lib64/libdl-2.17.so
+7f2a319c0000-7f2a319d5000 r-xp 00000000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a319d5000-7f2a31bd4000 ---p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd4000-7f2a31bd5000 r--p 00014000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd5000-7f2a31bd6000 rw-p 00015000 fd:00 40274                      /usr/lib64/libz.so.1.2.7
+7f2a31bd6000-7f2a31d8c000 r-xp 00000000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31d8c000-7f2a31f8c000 ---p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f8c000-7f2a31f90000 r--p 001b6000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f90000-7f2a31f92000 rw-p 001ba000 fd:00 39896                      /usr/lib64/libc-2.17.so
+7f2a31f92000-7f2a31f97000 rw-p 00000000 00:00 0 
+7f2a31f97000-7f2a31fac000 r-xp 00000000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a31fac000-7f2a321ab000 ---p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ab000-7f2a321ac000 r--p 00014000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ac000-7f2a321ad000 rw-p 00015000 fd:00 82                         /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+7f2a321ad000-7f2a322ad000 r-xp 00000000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a322ad000-7f2a324ad000 ---p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ad000-7f2a324ae000 r--p 00100000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324ae000-7f2a324af000 rw-p 00101000 fd:00 39904                      /usr/lib64/libm-2.17.so
+7f2a324af000-7f2a325ba000 r-xp 00000000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a325ba000-7f2a327ba000 ---p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327ba000-7f2a327c1000 rw-p 0010b000 00:37 18528796                   /class/cs225/lm35/lib/libc++.so.1.0
+7f2a327c1000-7f2a327c4000 rw-p 00000000 00:00 0 
+7f2a327c4000-7f2a327ed000 r-xp 00000000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a327ed000-7f2a329ed000 ---p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ed000-7f2a329ee000 r--p 00029000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ee000-7f2a329ef000 rw-p 0002a000 fd:00 40294                      /usr/lib64/libpng15.so.15.13.0
+7f2a329ef000-7f2a329f6000 r-xp 00000000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a329f6000-7f2a32bf5000 ---p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf5000-7f2a32bf6000 r--p 00006000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf6000-7f2a32bf7000 rw-p 00007000 fd:00 39926                      /usr/lib64/librt-2.17.so
+7f2a32bf7000-7f2a32c0e000 r-xp 00000000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32c0e000-7f2a32e0d000 ---p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0d000-7f2a32e0e000 r--p 00016000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0e000-7f2a32e0f000 rw-p 00017000 fd:00 39922                      /usr/lib64/libpthread-2.17.so
+7f2a32e0f000-7f2a32e13000 rw-p 00000000 00:00 0 
+7f2a32e13000-7f2a32e33000 r-xp 00000000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a3300f000-7f2a33015000 rw-p 00000000 00:00 0 
+7f2a3302f000-7f2a33030000 rw-p 00000000 00:00 0 
+7f2a33030000-7f2a33032000 rw-p 00000000 00:00 0 
+7f2a33032000-7f2a33033000 r--p 0001f000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33033000-7f2a33034000 rw-p 00020000 fd:00 39889                      /usr/lib64/ld-2.17.so
+7f2a33034000-7f2a33035000 rw-p 00000000 00:00 0 
+7fffb955d000-7fffb957e000 rw-p 00000000 00:00 0                          [stack]
+7fffb95b1000-7fffb95b3000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Terminated by SIGABRT
+
+----------------------------------------------------------------
+testInsertTough (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testInsertTough [worth 10 points, output below]
+call insert function
+using findI
+newNodeLevel = 1
+Insert key34
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key3
+The keys are now < 34 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 2
+ForwarLevel = 1
+MaxLevel = 2
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < 3, 34 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+=================================================================
+==24387==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef60 at pc 0x0000006a348c bp 0x7ffd859bd9f0 sp 0x7ffd859bd9e8
+WRITE of size 8 at 0x60200000ef60 thread T0
+    #0 0x6a348b in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a348b)
+    #1 0x663345 in proxy_test::testInsertTough(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x663345)
+    #2 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #3 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #4 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #5 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #6 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #7 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #8 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #9 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #10 0x7f0da4368b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+0x60200000ef60 is located 0 bytes to the right of 16-byte region [0x60200000ef50,0x60200000ef60)
+allocated by thread T0 here:
+    #0 0x41e92b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ac05e in std::__1::__split_buffer<SkipPointer, std::__1::allocator<SkipPointer>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<SkipPointer>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6ac05e)
+    #2 0x6aaddc in void std::__1::vector<SkipPointer, std::__1::allocator<SkipPointer> >::__push_back_slow_path<SkipPointer>(SkipPointer&&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6aaddc)
+    #3 0x6b43f9 in SkipNode::SkipNode(int, RGBAPixel, int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6b43f9)
+    #4 0x6a20f4 in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a20f4)
+    #5 0x663345 in proxy_test::testInsertTough(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x663345)
+    #6 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #7 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #8 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #9 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #10 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #11 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #12 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #13 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #14 0x7f0da4368b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 SkipList::insert(int, RGBAPixel)
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa fa fa fa fa fa fa fa fa 00 00[fa]fa fd fd
+  0x0c047fff9df0: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==24387==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+testRemoveEasy [5 points]
+Result: FAILED: Segmentation fault
+Took 0ms (1000ms timeout)
+Output:
+----------------------------------------------------------------
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key2
+The keys are now < 1 >
+traverse->prev1
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key3
+The keys are now < 1, 2 >
+traverse->prev2
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findR
+2
+go next
+3
+go next
+2147483647
+go down
+3
+go next
+2147483647
+go down
+newNodeLevel = 3
+Insert key4
+The keys are now < 1, 2, 3 >
+traverse->prev3
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key5
+The keys are now < 1, 2, 3, 4 >
+traverse->prev4
+At line 112
+ForwarLevel = 0
+MaxLevel = 3
+forward == tail
+nodePointers.size()>forwardLevel
+ForwarLevel = 2
+MaxLevel = 3
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key6
+Terminated by SIGSEGV
+The keys are now < 28349072, 
+
+----------------------------------------------------------------
+testRemoveHard (run under asan) [10 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testRemoveHard [worth 10 points, output below]
+call insert function
+using findI
+newNodeLevel = 1
+Insert key2
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key4
+The keys are now < 2 >
+traverse->prev2
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key6
+The keys are now < 2, 4 >
+traverse->prev4
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+=================================================================
+==24399==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef40 at pc 0x0000006a348c bp 0x7ffe1dd6a990 sp 0x7ffe1dd6a988
+WRITE of size 8 at 0x60200000ef40 thread T0
+    #0 0x6a348b in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a348b)
+    #1 0x6678ce in proxy_test::testRemoveHard(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6678ce)
+    #2 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #3 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #4 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #5 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #6 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #7 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #8 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #9 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #10 0x7fc8c0f41b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+0x60200000ef40 is located 0 bytes to the right of 16-byte region [0x60200000ef30,0x60200000ef40)
+allocated by thread T0 here:
+    #0 0x41e92b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ac05e in std::__1::__split_buffer<SkipPointer, std::__1::allocator<SkipPointer>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<SkipPointer>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6ac05e)
+    #2 0x6aaddc in void std::__1::vector<SkipPointer, std::__1::allocator<SkipPointer> >::__push_back_slow_path<SkipPointer>(SkipPointer&&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6aaddc)
+    #3 0x6b43f9 in SkipNode::SkipNode(int, RGBAPixel, int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6b43f9)
+    #4 0x6a20f4 in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a20f4)
+    #5 0x6678ce in proxy_test::testRemoveHard(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6678ce)
+    #6 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #7 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #8 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #9 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #10 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #11 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #12 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #13 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #14 0x7fc8c0f41b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 SkipList::insert(int, RGBAPixel)
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa fa fa fa fa 00 00[fa]fa 04 fa fa fa fd fd
+  0x0c047fff9df0: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==24399==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+----------------------------------------------------------------
+testConstructor2 (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (1000ms timeout)
+Output:
+----------------------------------------------------------------
+Running testConstructor2 [worth 5 points, output below]
+call insert function
+using findI
+newNodeLevel = 1
+Insert key1337
+The keys are now < >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 1
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 2
+Insert key42
+The keys are now < 1337 >
+traverse->prev-2147483648
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+nodePointers.size()>forwardLevel
+ForwarLevel = 1
+MaxLevel = 2
+ForwarLevel = 1
+MaxLevel = 2
+forward == tail
+At line 135
+call insert function
+using findI
+newNodeLevel = 1
+Insert key9999
+The keys are now < 42, 1337 >
+traverse->prev1337
+At line 112
+ForwarLevel = 0
+MaxLevel = 2
+forward == tail
+nodePointers.size()>forwardLevel
+=================================================================
+==24414==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60200000ef60 at pc 0x0000006a348c bp 0x7ffddf5d2350 sp 0x7ffddf5d2348
+WRITE of size 8 at 0x60200000ef60 thread T0
+    #0 0x6a348b in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a348b)
+    #1 0x66c0ce in proxy_test::testConstructor2(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x66c0ce)
+    #2 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #3 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #4 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #5 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #6 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #7 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #8 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #9 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #10 0x7f1a969f9b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+    #11 0x4a3319 in _start (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4a3319)
+
+0x60200000ef60 is located 0 bytes to the right of 16-byte region [0x60200000ef50,0x60200000ef60)
+allocated by thread T0 here:
+    #0 0x41e92b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x6ac05e in std::__1::__split_buffer<SkipPointer, std::__1::allocator<SkipPointer>&>::__split_buffer(unsigned long, unsigned long, std::__1::allocator<SkipPointer>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6ac05e)
+    #2 0x6aaddc in void std::__1::vector<SkipPointer, std::__1::allocator<SkipPointer> >::__push_back_slow_path<SkipPointer>(SkipPointer&&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6aaddc)
+    #3 0x6b43f9 in SkipNode::SkipNode(int, RGBAPixel, int) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6b43f9)
+    #4 0x6a20f4 in SkipList::insert(int, RGBAPixel) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x6a20f4)
+    #5 0x66c0ce in proxy_test::testConstructor2(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x66c0ce)
+    #6 0x4eb038 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4eb038)
+    #7 0x4d0183 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4d0183)
+    #8 0x4c120c in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4c120c)
+    #9 0x4bb882 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4bb882)
+    #10 0x4b1547 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b1547)
+    #11 0x4b06e7 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4b06e7)
+    #12 0x4ace49 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4ace49)
+    #13 0x4aa79e in main (/dev/shm/cs225student/autograder/monad/monad/lab_gdb2_grade/proxy-asan+0x4aa79e)
+    #14 0x7f1a969f9b34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ??:0 SkipList::insert(int, RGBAPixel)
+Shadow bytes around the buggy address:
+  0x0c047fff9d90: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9da0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9db0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dc0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9dd0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0c047fff9de0: fa fa fa fa fa fa fa fa fa fa 00 00[fa]fa fd fd
+  0x0c047fff9df0: fa fa 00 00 fa fa fd fd fa fa fd fd fa fa fd fa
+  0x0c047fff9e00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e10: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e20: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff9e30: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  ASan internal:           fe
+==24414==ABORTING
+Result: FAILED:
+Memory Errors Detected by ASAN
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 24
+

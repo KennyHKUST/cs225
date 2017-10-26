@@ -1,0 +1,149 @@
+Grading r35898 by xinran2 committed on Tue Mar 28 23:25:46 CDT 2017
+Monad Autograder
+Testing mp5 at 2017-03-29 01:20:28
+
+"If at first you don't succeed, that's one data point." ~ Randall Munroe
+
+Setting up test environment...
+Compiling...
+================================================================
+unit_tests.cpp:457:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(1));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:465:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(3));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:472:25: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(0, first.idealPrune(1));
+                         ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:479:28: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1011, first.idealPrune(10000));
+                            ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:509:46: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
+                                             ~~~~~  ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+5 errors generated.
+unit_tests.cpp:457:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(1));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:465:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(3));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:472:25: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(0, first.idealPrune(1));
+                         ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:479:28: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1011, first.idealPrune(10000));
+                            ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:509:46: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
+                                             ~~~~~  ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+5 errors generated.
+ld: no input files
+unit_tests.cpp:457:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(1));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:465:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(3));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:472:25: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(0, first.idealPrune(1));
+                         ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:479:28: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1011, first.idealPrune(10000));
+                            ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:509:46: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
+                                             ~~~~~  ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+5 errors generated.
+unit_tests.cpp:457:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(1));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:465:29: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(44802, first.idealPrune(3));
+                             ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:472:25: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(0, first.idealPrune(1));
+                         ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:479:28: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1011, first.idealPrune(10000));
+                            ~~~~~ ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+unit_tests.cpp:509:46: error: no member named 'idealPrune' in 'Quadtree'
+        ASSERT_EQUALS(1000, first->pruneSize(first->idealPrune(1000)));
+                                             ~~~~~  ^
+./proxy.h:326:62: note: expanded from macro 'ASSERT_EQUALS'
+                std::string errormsg = proxy::assert_equals_help(expected, actual, #expected, #actual);  \
+                                                                           ^
+5 errors generated.
+ld: no input files
+clang-3.5: error: no such file or directory: 'unit_tests.o'
+make: *** [proxy] Error 1
+make: *** Waiting for unfinished jobs....
+
+
+Running tests...
+================================================================
+Could not execute test cases
+
+
+Total score...
+================================================================
+TOTAL SCORE: 0
+

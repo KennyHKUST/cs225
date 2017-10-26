@@ -1,0 +1,387 @@
+Grading r13976 by xinran2 committed on Fri Feb 10 22:19:43 CST 2017
+Monad Autograder
+Testing mp2 at 2017-02-11 00:38:01
+
+"First, solve the problem. Then, write the code." ~ John Johnson
+
+Setting up test environment...
+Compiling...
+================================================================
+image.cpp:9:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:19:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:20:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:35:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:36:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:46:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:47:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+7 warnings generated.
+scene.cpp:200:35: warning: comparison of integers of different signs: 'unsigned long' and 'int' [-Wsign-compare]
+    if(coor[i*2] + im[i]->width() > maxwidth)
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~
+scene.cpp:202:38: warning: comparison of integers of different signs: 'unsigned long' and 'int' [-Wsign-compare]
+    if(coor[i*2+1] + im[i]->height() > maxheight)
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~
+scene.cpp:212:28: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+    for(int x=coor[i*2]; x < coor[i*2]+im[i]->width(); x++){
+                         ~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+scene.cpp:214:33: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+      for (int y=coor[i*2+1]; y < coor[i*2+1]+im[i]->height(); y++){
+                              ~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+image.cpp:9:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:19:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:20:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:35:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:36:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+image.cpp:46:17: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+  for(int x=0; x<(*this).width(); x++){
+               ~^~~~~~~~~~~~~~~~
+image.cpp:47:19: warning: comparison of integers of different signs: 'int' and 'size_t' (aka 'unsigned long') [-Wsign-compare]
+    for(int y=0; y<(*this).height(); y++){
+                 ~^~~~~~~~~~~~~~~~~
+7 warnings generated.
+scene.cpp:200:35: warning: comparison of integers of different signs: 'unsigned long' and 'int' [-Wsign-compare]
+    if(coor[i*2] + im[i]->width() > maxwidth)
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~
+scene.cpp:202:38: warning: comparison of integers of different signs: 'unsigned long' and 'int' [-Wsign-compare]
+    if(coor[i*2+1] + im[i]->height() > maxheight)
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~~~~~~~
+scene.cpp:212:28: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+    for(int x=coor[i*2]; x < coor[i*2]+im[i]->width(); x++){
+                         ~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+scene.cpp:214:33: warning: comparison of integers of different signs: 'int' and 'unsigned long' [-Wsign-compare]
+      for (int y=coor[i*2+1]; y < coor[i*2+1]+im[i]->height(); y++){
+                              ~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+
+
+Running tests...
+================================================================
+InvertColorsEven . . . . . . . . . [8 pts] - passed
+FlipLeftEven . . . . . . . . . . . [4 pts] - passed
+FlipLeftOdd  . . . . . . . . . . . [4 pts] - passed
+AdjustBrightnessEven . . . . . . . [3 pts] - passed
+AdjustBrightnessEven2  . . . . . . [3 pts] - passed
+AdjustBrightnessEven3  . . . . . . [3 pts] - passed
+ImageMakefile  . . . . . . . . . . [5 pts] - passed
+Valgrind1 (asan) . . . . . . . . . [5 pts] - passed
+AddPictureValidIndex . . . . . . . [2 pts] - passed
+AddPictureInvalidIndex . . . . . . [2 pts] - passed
+ImageAssignmentOperator  . . . . . [2 pts] - passed
+SceneGetPictureInvalidIndex  . . . [2 pts] - passed
+SceneChangeMaxLayersLarger . . . . [2 pts] - passed
+SceneChangeMaxLayersSmaller (asan) [1 pts] - passed
+SceneChangeMaxLayersInvalidChange  [2 pts] - passed
+SceneCopyCtor  . . . . . . . . . . [2 pts] - passed
+SceneCopyCtor2 . . . . . . . . . . [2 pts] - passed
+SceneAssignmentOperator  . . . . . [2 pts] - passed
+SceneAssignmentOperator2 . . . . . [2 pts] - passed
+SceneChangeLayer . . . . . . . . . [2 pts] - passed
+SceneChangeLayerInvalid  . . . . . [2 pts] - passed
+SceneDrawScene . . . . . . . . . . [3 pts] - passed
+SceneDrawScene2  . . . . . . . . . [3 pts] - passed
+SceneDrawScene3  . . . . . . . . . [3 pts] - FAILED: unit_tests.cpp:298: Assertion (*soln == firstScene->drawscene()) failed
+SceneDrawScene4  . . . . . . . . . [3 pts] - FAILED: unit_tests.cpp:313: Assertion (*soln == firstScene->drawscene()) failed
+SceneDrawSceneChangeLayer  . . . . [2 pts] - passed
+SceneDrawSceneDeletePicture  . . . [2 pts] - passed
+SceneDrawSceneTranslate  . . . . . [2 pts] - passed
+SceneDrawSceneTranslate2 . . . . . [2 pts] - FAILED: unit_tests.cpp:368: Assertion (*soln == firstScene->drawscene()) failed
+SceneTranslateInvalid  . . . . . . [2 pts] - passed
+SceneTranslateInvalid2 . . . . . . [1 pts] - passed
+SceneDeletePictureInvalid  . . . . [2 pts] - passed
+Valgrind2 (asan) . . . . . . . . . [5 pts] - passed
+Valgrind3 (asan) . . . . . . . . . [5 pts] - FAILED: Memory errors detected by ASAN
+SceneMakefile  . . . . . . . . . . [5 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 87
+
+
+
+Detailed test output...
+================================================================
+----------------------------------------------------------------
+SceneDrawScene3 [3 points]
+Result: FAILED: unit_tests.cpp:298: Assertion (*soln == firstScene->drawscene()) failed
+Took 4ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+index out of bounds
+
+----------------------------------------------------------------
+SceneDrawScene4 [3 points]
+Result: FAILED: unit_tests.cpp:313: Assertion (*soln == firstScene->drawscene()) failed
+Took 3ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+index out of bounds
+
+----------------------------------------------------------------
+SceneDrawSceneTranslate2 [2 points]
+Result: FAILED: unit_tests.cpp:368: Assertion (*soln == firstScene->drawscene()) failed
+Took 136ms (2000ms timeout)
+Output:
+----------------------------------------------------------------
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 55);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 55);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 55);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 56);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 56);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 56);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 57);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 57);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 57);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 58);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 58);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 58);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 59);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 59);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 59);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 60);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 60);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 60);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 61);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 61);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 61);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 62);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 62);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 62);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 63);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 63);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 63);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 64);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 64);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 64);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 65);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 65);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 65);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 66);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 66);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 66);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 67);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 67);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 67);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 68);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 68);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 68);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 69);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 69);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 69);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 70);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 70);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 70);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 71);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 71);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 71);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 72);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 72);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 72);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 73);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 73);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 73);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 74);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 74);
+            Truncating request to fit in the range [0,99] x [0,54].
+
+[EasyPNG]: Warning: attempted to access non-existent pixel (0, 74);
+            Truncating request to fit in
+
+----------------------------------------------------------------
+Valgrind3 (run under asan) [5 points]
+Result: FAILED: Memory errors detected by ASAN
+Took unknown time (10000ms timeout)
+Output:
+----------------------------------------------------------------
+Running Valgrind3 [worth 5 points, output below]
+2
+82
+82
+94
+98
+158
+
+=================================================================
+==29875==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 24 byte(s) in 1 object(s) allocated from:
+    #0 0x41ed8b in operator new(unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:62:35
+    #1 0x685303 in Scene::addpicture(char const*, int, int, int) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x685303)
+    #2 0x65d6e8 in proxy_test::Valgrind3(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x65d6e8)
+    #3 0x4ea808 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ea808)
+    #4 0x4cf9b3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4cf9b3)
+    #5 0x4c14fe in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4c14fe)
+    #6 0x4bbce2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4bbce2)
+    #7 0x4b19a7 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b19a7)
+    #8 0x4b0b47 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b0b47)
+    #9 0x4ad2a9 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ad2a9)
+    #10 0x4aabfe in main (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4aabfe)
+    #11 0x7f58a7c3db34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+Indirect leak of 400 byte(s) in 1 object(s) allocated from:
+    #0 0x41eedb in operator new[](unsigned long) /dev/shm/225/lm35/src/llvm/projects/compiler-rt/lib/asan/asan_new_delete.cc:64:37
+    #1 0x672f2d in PNG::_read_file(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x672f2d)
+    #2 0x676012 in PNG::readFromFile(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x676012)
+    #3 0x6856cb in Scene::addpicture(char const*, int, int, int) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x6856cb)
+    #4 0x65d6e8 in proxy_test::Valgrind3(util::sizedpipestream<512ul>&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x65d6e8)
+    #5 0x4ea808 in monad_shared::unit_test_input::execute(util::sizedpipestream<512ul>&) const (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ea808)
+    #6 0x4cf9b3 in proxy::test_execution::child_test() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4cf9b3)
+    #7 0x4c14fe in proxy::test_execution::child() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4c14fe)
+    #8 0x4bbce2 in proxy::RunTests::run_single_test(monad_shared::unit_test_input const&) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4bbce2)
+    #9 0x4b19a7 in proxy::RunTests::run_single_test(char const*) (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b19a7)
+    #10 0x4b0b47 in proxy::RunTests::execute_by_mode() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4b0b47)
+    #11 0x4ad2a9 in proxy::RunTests::execute() (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4ad2a9)
+    #12 0x4aabfe in main (/dev/shm/cs225student/autograder/monad/monad/mp2_grade/proxy-asan+0x4aabfe)
+    #13 0x7f58a7c3db34 in __libc_start_main (/lib64/libc.so.6+0x21b34)
+
+SUMMARY: AddressSanitizer: 424 byte(s) leaked in 2 allocation(s).
+Result: FAILED:
+Memory Leaks Detected by ASAN
+
+
+----------------------------------------------------------------
+Total score...
+================================================================
+TOTAL SCORE: 87
+
